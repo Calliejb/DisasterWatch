@@ -1,4 +1,5 @@
 DisasterWatch::Application.routes.draw do
+  devise_for :users
   resources :organizations
   resources :updates
   resources :disasters
