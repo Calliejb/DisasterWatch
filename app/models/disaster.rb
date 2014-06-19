@@ -1,20 +1,27 @@
+require 'httparty'
+
 class Disaster < ActiveRecord::Base
+  
+  include HTTParty
+
   belongs_to :country
 
-  	def self.party(movie)
-		movie ||= "matrix"
-
-		# q = movie
-		# page_limit = 1
-		disasters_url = "http://api.rwlabs.org/v1/disasters.json"
+	def self.get_all_disasters
+		response = HTTParty.get("http://api.rwlabs.org/v1/disasters?sort[]=date:desc&limit=30")
 		
-		response = HTTParty.get disasters_url
-
-		@id = response["disasters"][0]["id"]
-		# id = '770672122'
-		disaster_url = "http://api.rwlabs.org/v1/disasters/#{id}.json"
-
-		response = HTTParty.get disaster_url
-		
+		# Takes the json data for disasters and pulls the string that gives the specific disaster data
+		response["data"].map do |d|
+			d["fields"]["name"].partition(":")[2]
+		end
 	end
+
+	def self.get_all_countries
+		response = HTTParty.get("http://api.rwlabs.org/v1/disasters?sort[]=date:desc&limit=30")
+		
+		# Takes the json data for disasters and pulls the string that gives the specific country
+		response["data"].map do |d|
+			d["fields"]["name"].partition(":")[0]
+		end
+	end
+
 end

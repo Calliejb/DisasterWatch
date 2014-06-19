@@ -1,1 +1,5 @@
-update_spec.rb
+require 'spec_helper'
+
+describe Update do
+
+end

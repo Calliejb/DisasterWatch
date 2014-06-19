@@ -51,6 +51,9 @@ GEM
     factory_girl_rails (4.4.1)
       factory_girl (~> 4.4.0)
       railties (>= 3.0.0)
+    foundation-rails (5.2.3.0)
+      railties (>= 3.1.0)
+      sass (>= 3.2.0)
     hike (1.2.3)
     httparty (0.13.1)
       json (~> 1.8)
@@ -148,6 +151,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise
   factory_girl_rails
+  foundation-rails
   httparty
   jbuilder (~> 1.2)
   jquery-rails
