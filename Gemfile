@@ -29,6 +29,19 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+gem "active_model_serializers"
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
+
+group :test do
+  gem 'shoulda-matchers', require: false
+end
+
+gem 'httparty'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
