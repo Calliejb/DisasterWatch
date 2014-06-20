@@ -1,9 +1,8 @@
 
-var color = d3.scale.quantize()
-            .range(["#fff7ec","#fee8c8","#fdd49e","#fdbb84","#fc8d59","#ef6548","#d7301f","#b30000","#7f0000"]);
+var color = "steelblue";
 
-var width = 400, 
-	height = 400;
+var width = 800, 
+	height = 800;
 
 var projection = d3.geo.mercator()
     .scale((width + 1) / 2 / Math.PI)
@@ -17,42 +16,33 @@ var path = d3.geo.path()
 var svg = d3.select("#map")
 	.append("svg");
 
-d3.json("aidsjson", function(data) {
+d3.json("countryjson", function(data) {
 
-    color.domain([
-	        d3.min(data, function(d) { return d.HIV; }),
-	        d3.max(data, function(d) { return d.HIV; })
-	]);
-
-
-	d3.json("disasterjson", function(error, json) {
+	d3.json("countrymapjson", function(error, json) {
 
 		if (error) {
 			console.log(error);
 		} else {
 
-			for (var i = 0; i < data.length; i++) {
+			for (var i = 0; i < data.disasters.length; i++) {
 
-            //State name
-            var dataState = data[i].country;
+	            //State name
+	            var dataState = data.disasters[i];
 
-            //convert value from string to float
-            var dataValue = parseFloat(data[i].HIV);
+	            console.log(dataState);
 
-            console.log(dataValue);
+	            	//Corresponding country inside the GeoJSON
+		            for (var j = 0; j < json.features.length; j++) {
 
-            	//Corresponding country inside the GeoJSON
-	            for (var j = 0; j < json.features.length; j++) {
+			            var jsonState = json.features[j].properties.name;
 
-		            var jsonState = json.features[j].properties.name;
+			            if (dataState == jsonState) {
 
-		            if (dataState == jsonState) {
+			                //Copy the data value into the JSON
+			                json.features[j].properties.value = 1;
 
-		                //Copy the data value into the JSON
-		                json.features[j].properties.value = dataValue;
-
-		                //Stop looking through the JSON
-		                break;
+			                //Stop looking through the JSON
+			                break;
 
 			        }
 			    }
@@ -64,13 +54,17 @@ d3.json("aidsjson", function(data) {
            .enter()
            .append("path")
            .attr("d", path)
+           .on("click", country_clicked)
+           .on("mouseover", mouseOver)
+           .on("mousemove", mouseMove)
+           .on("mouseout", mouseOut)
            .style("fill", function(d) {
                     //Data value
                     var value = d.properties.value;
 
                     if (value) {
                             //If value exists…
-                            return color(value);
+                            return color;
                     } else {
                             //If value is undefined…
                             return "grey";
