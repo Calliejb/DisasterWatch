@@ -21,13 +21,6 @@ class DisastersController < ApplicationController
   	render json: @country_disasters
   end
 
-  def aids
-  	@aids = File.read("public/assets/javascript/geodata/hiv-1995.json")
-  	render json: @aids
-  end
-
-
-
   def show
   end
 end

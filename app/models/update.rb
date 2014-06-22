@@ -8,21 +8,25 @@ class Update < ActiveRecord::Base
   belongs_to :organization
 
 
-	def self.get_updates
-		HTTParty.get("http://api.feedzilla.com/v1/categories/19/subcategories/830/articles.json?count=10")
-		
-		# Takes the json data for disasters and pulls the string that gives the specific disaster data
-	end
-
 	def self.get_feedzilla_countries
 		response = HTTParty.get("http://api.feedzilla.com/v1/categories/19/subcategories.json")
 		
-		response["display_subcategory_name"].partition("- ")[2].map
+		response.map do |r|
+			r["display_subcategory_name"].partition("- ")[2]
+		end
 	end
 
 	def self.get_feedzilla_country_ids
 		response = HTTParty.get("http://api.feedzilla.com/v1/categories/19/subcategories.json")
 		
-		response["subcategory_id"].map
+		response.map do |r|
+			r["subcategory_id"]
+		end
+	end
+
+	def self.get_updates
+		HTTParty.get("http://api.feedzilla.com/v1/categories/19/subcategories/#{country_id}/articles.json?count=20")
+		
+		# Takes the json data for disasters and pulls the string that gives the specific disaster data
 	end
 end
