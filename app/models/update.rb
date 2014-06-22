@@ -9,20 +9,20 @@ class Update < ActiveRecord::Base
 
 
 	def self.get_updates
-		response = HTTParty.get("http://api.rwlabs.org/v1/disasters?sort[]=date:desc&limit=30")
+		HTTParty.get("http://api.feedzilla.com/v1/categories/19/subcategories/830/articles.json?count=10")
 		
 		# Takes the json data for disasters and pulls the string that gives the specific disaster data
-		response["data"].map do |d|
-			d["fields"]["name"].partition(":")[2]
-		end
 	end
 
-	def self.get_all_countries
-		response = HTTParty.get("http://api.rwlabs.org/v1/disasters?sort[]=date:desc&limit=30")
+	def self.get_feedzilla_countries
+		response = HTTParty.get("http://api.feedzilla.com/v1/categories/19/subcategories.json")
 		
-		# Takes the json data for disasters and pulls the string that gives the specific country
-		response["data"].map do |d|
-			d["fields"]["name"].partition(":")[0]
-		end
+		response["display_subcategory_name"].partition("- ")[2].map
+	end
+
+	def self.get_feedzilla_country_ids
+		response = HTTParty.get("http://api.feedzilla.com/v1/categories/19/subcategories.json")
+		
+		response["subcategory_id"].map
 	end
 end

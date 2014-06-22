@@ -1,2 +1,8 @@
 <h1>NEWS UPDATES</h1>
-<p>Find me in app/views/updates/index.html.erb</p>
+<% @updates["articles"].each do |u| %>
+		<h3><%= u["title"] %></h3> <br>
+		<%= u["summary"] %> <br>
+		<%= u["publish_date"] %><br>
+		<%= u["source"] %><br>
+		<%= u["url"] %><br>
+	<% end %>

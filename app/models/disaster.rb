@@ -18,7 +18,7 @@ class Disaster < ActiveRecord::Base
 	def self.get_all_countries
 		response = HTTParty.get("http://api.rwlabs.org/v1/disasters?sort[]=date:desc&limit=30")
 		
-		# Takes the json data for disasters and pulls the string that gives the specific country
+		# Takes the json data for countries and pulls the string that gives the specific country
 		response["data"].map do |d|
 			d["fields"]["name"].partition(":")[0]
 		end
