@@ -3,6 +3,7 @@ class OrganizationsController < ApplicationController
 
   def index
   	@organizations = Organization.all
+  	respond_with @organizations
   end
 
   def new
@@ -14,18 +15,14 @@ class OrganizationsController < ApplicationController
     @organization = Organization.new(organization_params)
     @organization.user = current_user
 
-    # Saves terms and tweets that are collected for each organization term
-    if @organization.save
-      respond_to do |format|
-        format.html {redirect_to organizationes_path(organization_id: @organization.id)}
-        format.json do 
-          render json: { @organiztions }, status: :created
-        end
-      end
-    else
-      respond_to do |format|
-        format.html {render 'new'}
-        format.json {render json: @organization.errors, status: :unprocessable_entity}
+
+    respond_to do |format|
+      if @organization.save
+        format.html { redirect_to @organization, notice: 'The new organization was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @organization }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @organization.errors, status: :unprocessable_entity }
       end
     end
 
@@ -34,13 +31,6 @@ class OrganizationsController < ApplicationController
 
   def show
     @organization = Organization.find(params[:id])
-    respond_to do |format|
-      format.html {render 'show'}
-      format.json do 
-        get_tweets(@organization)
-        render json: { terms: @organization.terms.map(&:text), tweets1: @tweets, tweets2: @tweets2 }
-      end
-    end
   end
 
   private
