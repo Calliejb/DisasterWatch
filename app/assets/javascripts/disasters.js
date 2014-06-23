@@ -16,7 +16,7 @@ var path = d3.geo.path()
 var svgmap = d3.select("#map")
 	.append("svg");
 
-var mapdata = d3.select("mapdata")
+var mapdata = d3.select("#mapdata")
 	.append("svg");
 
 var followedCountries = [];
@@ -81,9 +81,9 @@ d3.json("countryjson", function(data) {
 
 		    function mouseOverCountry(d) {
 
-		    	var country_name = d.properties.name;
+		    	var countryName = d.properties.name;
 
-		    	console.log(country_name);
+		    	console.log(countryName);
 
 		    	var dataString;
 
@@ -97,7 +97,7 @@ d3.json("countryjson", function(data) {
 
 		    	d3.select(this)
 				    // .style("fill", "orange")
-				    .html(country_name + "<br/>" + dataString)
+				    .html(countryName + "<br/>" + dataString)
 		            .style("left", (d3.event.pageX + 10) + "px")
 		            .style("top", (d3.event.pageY - 20) + "px");
 		    }
@@ -156,5 +156,11 @@ d3.json("countryjson", function(data) {
 
 function returnCountryArray() {
 	console.log(followedCountries);
-	return followedCountries;
+	$.ajax({
+	  type: "POST",
+	  url: "/countries",
+	  data: { country: {name: "Canada"} },
+	  success: function() { alert("Success!"); }
+	});
 }
+

@@ -1,2 +1,10 @@
-<h1>THIS IS WHERE MY MAP WILL GO</h1>
-<p>Find me in app/views/countries/index.html.erb</p>
+<h1>THIS IS WHERE MY Personal Newsfeed WILL GO</h1>
+
+<% @countries.each do |c| %>
+	<%= c.name %>
+	<%= c.id %>
+<% end %>
+
+<% @personal_updates.each do |p| %>
+	<%= p[0] %>
+<% end %>
