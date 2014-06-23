@@ -2,22 +2,45 @@
 var color = "steelblue";
 
 var width = 1000, 
-	height = 1000;
+	height = 1000,
+	sens = 0.25,
+	focused;
 
-var projection = d3.geo.mercator()
-    .scale((width + 1) / 2 / Math.PI)
+//Sets up my globe projection
+var projection = d3.geo.orthographic()
+    .scale(350)
+    .rotate([0, 0])
     .translate([width / 2, height / 2])
-    .precision(.1);
+    .clipAngle(90);
+
+// MERCATOR PROJECTION
+// d3.geo.mercator()
+//     .scale((width + 1) / 2 / Math.PI)
+//     .translate([width / 2, height / 2])
+//     .precision(.1);
 
 var path = d3.geo.path()
 				.projection(projection);
 
-
+//SVG Container
 var svgmap = d3.select("#map")
-	.append("svg");
+	.append("svg")
+	.attr("width", width)
+	.attr("height", height)
+    .call(d3.behavior.drag()
+		.origin(function() { var r = projection.rotate(); return {x: r[0] / sens, y: -r[1] / sens}; })
+		.on("drag", function() {
+		var rotate = projection.rotate();
+			projection.rotate([d3.event.x * sens, -d3.event.y * sens, rotate[2]]);
+			svgmap.selectAll("path").attr("d", path);
+			svgmap.selectAll(".focused").classed("focused", focused = false);
+	}));
 
 var mapdata = d3.select("#mapdata")
 	.append("svg");
+
+var countryTooltip = d3.select("#mapdata").append("div").attr("class", "countryTooltip"),
+  countryList = d3.select("#mapdata").append("select").attr("name", "countries");
 
 var followedCountries = [];
 
@@ -56,6 +79,15 @@ d3.json("countryjson", function(data) {
 			        } 
 				}
 			}
+
+			// var countryById = {};
+
+			// json.forEach(function(d) {
+			// 	countryById[d.id] = d.name;
+			// 	option = countryList.append("option");
+			// 	option.text(d.name);
+			// 	option.property("value", d.id);
+			// });
 
 	        svgmap.selectAll("path")
 	           .data(json.features)
@@ -126,7 +158,7 @@ d3.json("countryjson", function(data) {
 
 		      if (followedCountries.indexOf(country) == -1) {
 				if (country) {
-					$(this).css({"fill": "blue" });
+					$(this).css({"fill": "green", "stroke": "darkgreen" });
 				}
 
 				if (country && value) {
@@ -154,6 +186,12 @@ d3.json("countryjson", function(data) {
 	});
 });
 
+//WATERRRR
+svgmap.append("path")
+	.datum({type: "Sphere"})
+	.attr("class", "water")
+	.attr("d", path);
+
 function returnCountryArray() {
 	console.log(followedCountries);
 	$.ajax({
@@ -163,9 +201,9 @@ function returnCountryArray() {
 	  data: { country: { name: JSON.stringify(followedCountries) }},
 	  // Saves data as an array in name.. maybe could be worked with?
 
-	  // data: function() { 
-	  // 	for (var i = 0; i < followedCountries.length; i++) {
-	  // 			country: { name: followedCountries[i] } }},
+	  // data: 
+	  // 	country: function() { for (var i = 0; i < followedCountries.length; i++) {
+	  // 			{ name: followedCountries[i] } }},
 	  success: function() { alert("Success!"); }
 	});
 }

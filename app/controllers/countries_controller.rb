@@ -3,6 +3,7 @@ class CountriesController < ApplicationController
   	@countries = Country.where(:user_id => current_user)
     # @countries = Country.all
   	# Something like this
+
   	# @personal_updates = @countries.map do |c|
   	# 	Update.get_feedzilla_country_ids_by_country(c)
   	# end
@@ -23,7 +24,6 @@ class CountriesController < ApplicationController
       format.html
       format.json { render json: @country}
     end
-
   end
 
   def create
@@ -49,5 +49,5 @@ class CountriesController < ApplicationController
     params.require(:country).permit(:name, :user_id)
   end
 
-
 end
+
