@@ -45,6 +45,11 @@ class Update < ActiveRecord::Base
 		# end
 	end
 
+	def self.get_all_updates
+		HTTParty.get("http://api.feedzilla.com/v1/categories/19/articles.json?count=50&order=date")
+	end
+	
+
 	def self.get_updates(country_id)
 		country_id ||= "830"
 
