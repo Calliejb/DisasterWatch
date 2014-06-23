@@ -13,7 +13,10 @@ var path = d3.geo.path()
 				.projection(projection);
 
 
-var svg = d3.select("#map")
+var svgmap = d3.select("#map")
+	.append("svg");
+
+var mapdata = d3.select("mapdata")
 	.append("svg");
 
 var followedCountries = [];
@@ -54,7 +57,7 @@ d3.json("countryjson", function(data) {
 				}
 			}
 
-	        svg.selectAll("path")
+	        svgmap.selectAll("path")
 	           .data(json.features)
 	           .enter()
 	           .append("path")
