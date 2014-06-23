@@ -3,8 +3,9 @@ require 'httparty'
 class Country < ActiveRecord::Base
 	include HTTParty
 
+	belongs_to :user
 	has_many :updates
-	has_many :disasters
+
 
 	def self.get_feedzilla_countries
 		response = HTTParty.get("http://api.feedzilla.com/v1/categories/19/subcategories.json")
@@ -14,7 +15,7 @@ class Country < ActiveRecord::Base
 		end
 	end
 
-	def self.get_feedzilla_country_ids
+	def self.get_all_feedzilla_country_ids
 		response = HTTParty.get("http://api.feedzilla.com/v1/categories/19/subcategories.json")
 		
 		response.map do |r|
