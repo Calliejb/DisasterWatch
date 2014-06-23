@@ -159,7 +159,13 @@ function returnCountryArray() {
 	$.ajax({
 	  type: "POST",
 	  url: "/countries",
-	  data: { country: {name: "Canada"} },
+	  //data: { country: { name: followedCountries[0] }},
+	  data: { country: { name: JSON.stringify(followedCountries) }},
+	  // Saves data as an array in name.. maybe could be worked with?
+
+	  // data: function() { 
+	  // 	for (var i = 0; i < followedCountries.length; i++) {
+	  // 			country: { name: followedCountries[i] } }},
 	  success: function() { alert("Success!"); }
 	});
 }

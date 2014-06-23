@@ -1,11 +1,11 @@
 class CountriesController < ApplicationController
   def index
-  	# @countries = Country.where(:user_id => current_user)
-    @countries = Country.all
+  	@countries = Country.where(:user_id => current_user)
+    # @countries = Country.all
   	# Something like this
-  	@personal_updates = @countries.map do |c|
-  		Update.get_feedzilla_country_ids_by_country(c)
-  	end
+  	# @personal_updates = @countries.map do |c|
+  	# 	Update.get_feedzilla_country_ids_by_country(c)
+  	# end
 
     # @updates = Update.get_updates(params[:country_id])
 
@@ -28,6 +28,7 @@ class CountriesController < ApplicationController
 
   def create
     @country = Country.new(country_params)
+    @country.user = current_user
     respond_to do |format|
       if @country.save
         format.html { redirect_to @country, notice: "Save process completed!" }
@@ -45,7 +46,7 @@ class CountriesController < ApplicationController
   private
 
   def country_params
-    params.require(:country).permit(:name)
+    params.require(:country).permit(:name, :user_id)
   end
 
 
