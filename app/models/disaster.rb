@@ -1,4 +1,5 @@
 require 'httparty'
+require 'open-uri'
 
 class Disaster < ActiveRecord::Base
   
@@ -21,6 +22,21 @@ class Disaster < ActiveRecord::Base
 		# Takes the json data for countries and pulls the string that gives the specific country
 		response["data"].map do |d|
 			d["fields"]["name"].partition(":")[0]
+		end
+	end
+
+	def self.get_conflicts
+		url = "wikipedia"
+		doc = Nokogiri::HTML(open(url))
+
+		conflicts = Array.new
+
+		doc.css(".offers").each do |shirt|
+			@title = shirt.at_css(".vip").text.upcase
+			@price = shirt.at_css(".amt").text.split(".99").join
+
+			conflicts << [@title, @price]
+			@listings = listings
 		end
 	end
 
