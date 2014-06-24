@@ -4,6 +4,7 @@ class DisastersController < ApplicationController
   def index
   	@countries = Disaster.get_all_countries
   	@country_disasters = Disaster.get_all_disasters
+  
   end
 
   def countrymap
@@ -19,6 +20,11 @@ class DisastersController < ApplicationController
   def countrydisasters
   	@country_disasters = Disaster.get_all_disasters
   	render json: @country_disasters
+  end
+
+  def disasterdescriptions
+    @descriptions = Disaster.get_all_descriptions
+    render json: @descriptions
   end
 
   def show
