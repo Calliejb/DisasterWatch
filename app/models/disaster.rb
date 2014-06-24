@@ -1,5 +1,6 @@
 require 'httparty'
 require 'open-uri'
+require 'nokogiri'
 
 class Disaster < ActiveRecord::Base
   
@@ -37,18 +38,17 @@ class Disaster < ActiveRecord::Base
 	end
 
 	def self.get_conflicts
-		url = "wikipedia"
+		url = "http://en.wikipedia.org/wiki/List_of_ongoing_armed_conflicts"
 		doc = Nokogiri::HTML(open(url))
 
-		conflicts = Array.new
-
-		doc.css(".offers").each do |shirt|
-			@title = shirt.at_css(".vip").text.upcase
-			@price = shirt.at_css(".amt").text.split(".99").join
-
-			conflicts << [@title, @price]
-			@listings = listings
+		doc.css(".wikitable").css("tr").css("td").map do |d|
+			d.text
 		end
+		# doc.css(".wikitable sortable jquery-tablesorter selectorgadget_selected").map do |country|
+		# 	country.at_css(".selectorgadget_selected").text
+		# 	# @price = shirt.at_css(".amt").text.split(".99").join
+		# end
+
 	end
 
 end

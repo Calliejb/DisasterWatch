@@ -7,3 +7,31 @@
 
 <button type="button" class="updateButton" onclick="returnCountryArray()">Select Country Updates</button>
 
+
+
+
+<% for i in 0..65 %>
+	<% if i % 7 == 3 %>
+		<h3><%= @conflicts[i] %></h3>
+	<% elsif i % 7 == 0 %>
+		<%= @conflicts[i] %>
+	<% elsif i % 7 == 1 %>
+		<%= @conflicts[i] %>
+	<% elsif i % 7 == 2 %>
+		<%= @conflicts[i] %>
+	<% end %>
+<% end %>
+
+<% for i in 67..400 %>
+	<% if i % 7 == 4 %>
+		<h3><%= @conflicts[i] %></h3>
+	<% elsif i % 7 == 1 %>
+		<%= @conflicts[i] %>
+	<% elsif i % 7 == 2 %>
+		<%= @conflicts[i] %>
+	<% elsif i % 7 == 3 %>
+		<%= @conflicts[i] %>
+	<% end %>
+<% end %>
+
+

@@ -5,6 +5,7 @@ class DisastersController < ApplicationController
   	@countries = Disaster.get_all_countries
   	@country_disasters = Disaster.get_all_disasters
   
+    @conflicts = Disaster.get_conflicts
   end
 
   def countrymap
