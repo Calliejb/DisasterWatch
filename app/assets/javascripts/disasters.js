@@ -50,35 +50,36 @@ d3.json("countryjson", function(data) {
 
 		d3.json("countrymapjson", function(error, json) {
 
-			if (error) {
-				console.log(error);
-			} else {
-				//Loops through countries taken from reliefweb api
-				for (var i = 0; i < data.disasters.length; i++) {
-					
-					//Country name
-			        var dataCountry = data.disasters[i];
-			        //Corresponding disaster
-			        var dataDisaster = disasterdata.disasters[i];
+				if (error) {
+					console.log(error);
+				} else {
+					//Loops through countries taken from reliefweb api
+					for (var i = 0; i < data.disasters.length; i++) {
 
-	            	//Corresponding country inside the GeoJSON
-		            for (var j = 0; j < json.features.length; j++) {
+						//Country name
+						var dataCountry = data.disasters[i];
+						//Corresponding disaster
+						var dataDisaster = disasterdata.disasters[i];
 
-			            var jsonCountry = json.features[j].properties.name;
+						//Corresponding country inside the GeoJSON
+						for (var j = 0; j < json.features.length; j++) {
 
-			            if (dataCountry == jsonCountry) {
+							var jsonCountry = json.features[j].properties.name;
 
-			                //Copy the data value into the JSON
-			                json.features[j].properties.value = 1;
-			                json.features[j].properties.disastervalue = dataDisaster;
-			                console.log(json.features[j].properties.disastervalue);
-			                //Stop looking through the JSON
-			                break;
+							if (dataCountry == jsonCountry) {
 
-			        	}
-			        } 
+							//Copy the data value into the JSON
+							json.features[j].properties.value = 1;
+							json.features[j].properties.disastervalue = dataDisaster;
+							
+							console.log(json.features[j].properties.disastervalue);
+							//Stop looking through the JSON
+							break;
+
+							}
+						} 
+					}
 				}
-			}
 
 			// var countryById = {};
 

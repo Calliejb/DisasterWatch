@@ -11,7 +11,7 @@ DisasterWatch::Application.routes.draw do
   get "/aidsjson" => "disasters#aids"
   get "/countryjson" => "disasters#countries"
   get "/countrydisasterjson" => "disasters#countrydisasters"
-  get "/disasterdescriptionjson" => "disasters#disasterdescriptions"
+  get "/disasterdescriptionsjson" => "disasters#disasterdescriptions"
   root 'welcome#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
