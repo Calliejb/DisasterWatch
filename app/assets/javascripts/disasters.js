@@ -44,22 +44,27 @@ var countryTooltip = d3.select("#mapdata").append("div").attr("class", "countryT
 
 var followedCountries = [];
 
+//Reliefweb data that lists countries with natural disasters
 d3.json("countryjson", function(data) {
-
+	
+	//Reliefweb data that has the actual disaster info
 	d3.json("countrydisasterjson", function(disasterdata) {
-
+		
+		//Geographic data for map
 		d3.json("countrymapjson", function(error, json) {
 
 				if (error) {
 					console.log(error);
 				} else {
+					
 					//Loops through countries taken from reliefweb api
 					for (var i = 0; i < data.disasters.length; i++) {
 
 						//Country name
 						var dataCountry = data.disasters[i];
+						
 						//Corresponding disaster
-						var dataDisaster = disasterdata.disasters[i];
+						var dataDisaster = disasterdata.title[i] + disasterdata.description[i];
 
 						//Corresponding country inside the GeoJSON
 						for (var j = 0; j < json.features.length; j++) {
@@ -81,61 +86,51 @@ d3.json("countryjson", function(data) {
 					}
 				}
 
-			// var countryById = {};
-
-			// json.forEach(function(d) {
-			// 	countryById[d.id] = d.name;
-			// 	option = countryList.append("option");
-			// 	option.text(d.name);
-			// 	option.property("value", d.id);
-			// });
-
-	        svgmap.selectAll("path")
-	           .data(json.features)
-	           .enter()
-	           .append("path")
-	           .attr("d", path)
-	           .style("fill", function(d) {
-	                    //Data value
-	                    var value = d.properties.value;
-
-	                    if (value) {
-	                            //If value exists…
-	                            return color;
-	                    } else {
-	                            //If value is undefined…
-	                            return "grey";
-	                    }
-	            })
-	           .on("click", countryClicked)
-	           .on("mouseover", mouseOverCountry)
-	           .on("mouseout", mouseOut);
+			svgmap.selectAll("path")
+				.data(json.features)
+				.enter()
+				.append("path")
+				.attr("d", path)
+				.style("fill", function(d) {
+				//Data value
+				var value = d.properties.value;
+					if (value) {
+					//If value exists…
+					return color;
+					} else {
+					//If value is undefined…
+					return "grey";
+					}
+				})
+				.on("click", countryClicked)
+				.on("mouseover", mouseOverCountry)
+				.on("mouseout", mouseOut);
 
 
-		    function mouseOverCountry(d) {
+			function mouseOverCountry(d) {
 
-		    	var countryName = d.properties.name;
+				var countryName = d.properties.name;
 
-		    	console.log(countryName);
+				console.log(countryName);
 
-		    	var dataString;
+				var dataString;
 
-		          if (d.properties.disastervalue) {
-		            dataString = d.properties.disastervalue;
-		          } else {
-		            dataString = " ";
-		          }
+				if (d.properties.disastervalue) {
+					dataString = d.properties.disastervalue;
+				} else {
+					dataString = " ";
+				}
 
-		       	console.log(dataString);
+				console.log(dataString);
 
-		    	d3.select(this)
-				    // .style("fill", "orange")
-				    .html(countryName + "<br/>" + dataString)
-		            .style("left", (d3.event.pageX + 10) + "px")
-		            .style("top", (d3.event.pageY - 20) + "px");
-		    }
+				d3.select(this)
+					// .style("fill", "orange")
+					.html(countryName + "<br/>" + dataString)
+					.style("left", (d3.event.pageX + 10) + "px")
+					.style("top", (d3.event.pageY - 20) + "px");
+			}
 
-		    function mouseOut(d) {
+			function mouseOut(d) {
 				
 				// var value = d.properties.value
 
@@ -145,67 +140,70 @@ d3.json("countryjson", function(data) {
 				// 	d3.select(this).style("fill", "grey");
 				// };
 
-		    }
+			}
 
 
-		    function countryClicked(d) {
+			function countryClicked(d) {
 
-		      console.log(d);
+				console.log(d);
 
-		      var country = d.properties.name;
-		      var value = d.properties.value;
+				var country = d.properties.name;
+				var value = d.properties.value;
 
-		      console.log(followedCountries.indexOf(country));
+				console.log(followedCountries.indexOf(country));
 
-		      if (followedCountries.indexOf(country) == -1) {
-				if (country) {
-					$(this).css({"fill": "green", "stroke": "darkgreen" });
+				if (followedCountries.indexOf(country) == -1) {
+					if (country) {
+						$(this).css({"fill": "green", "stroke": "darkgreen" });
+					}
+
+					if (country && value) {
+						$(this).css({"fill": "lightblue"});
+					}
+					//Adds the country that the user wants to follow to the followedCountries array
+					followedCountries.push(country);
+					var countryIndex = followedCountries.indexOf(country);
+					d.properties.index = countryIndex;
+					console.log(followedCountries);
+				} else {
+					if (country) {
+						$(this).css({"fill": "grey" });
+					}
+					
+					if (country && value) {
+						$(this).css({"fill": "steelblue"});
+					}
+					//Removes the country from the array if not hightlighted
+					delete followedCountries[d.properties.index];
+					console.log(followedCountries);
 				}
-
-				if (country && value) {
-					$(this).css({"fill": "lightblue"});
-				}
-				followedCountries.push(country);
-				var countryIndex = followedCountries.indexOf(country);
-				d.properties.index = countryIndex;
-				console.log(followedCountries);
-
-			  } else {
-			  	if (country) {
-			    	$(this).css({"fill": "grey" });
-			    }
-			    if (country && value) {
-					$(this).css({"fill": "steelblue"});
-				}
-				delete followedCountries[d.properties.index];
-				console.log(followedCountries);
-			  }
-
-		    }
-
-    	});
+			}
+		});
 	});
 });
 
-//WATERRRR
+//End of COUNTRY JSON DATA
+
+//Adds water to map
 svgmap.append("path")
 	.datum({type: "Sphere"})
 	.attr("class", "water")
 	.attr("d", path);
 
+//Ajax request that pushes my country array to my country model
 function returnCountryArray() {
 	console.log(followedCountries);
 	$.ajax({
-	  type: "POST",
-	  url: "/countries",
-	  //data: { country: { name: followedCountries[0] }},
-	  data: { country: { name: JSON.stringify(followedCountries) }},
-	  // Saves data as an array in name.. maybe could be worked with?
+		type: "POST",
+		url: "/countries",
+		//data: { country: { name: followedCountries[0] }},
+		data: { country: { name: JSON.stringify(followedCountries) }},
+		// Saves data as an array in name.. maybe could be worked with?
 
-	  // data: 
-	  // 	country: function() { for (var i = 0; i < followedCountries.length; i++) {
-	  // 			{ name: followedCountries[i] } }},
-	  success: function() { alert("Success!"); }
+		// data: 
+		//	country: function() { for (var i = 0; i < followedCountries.length; i++) {
+		//			{ name: followedCountries[i] } }},
+		success: function() { alert("Success!"); }
 	});
 }
 

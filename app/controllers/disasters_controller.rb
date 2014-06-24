@@ -20,12 +20,8 @@ class DisastersController < ApplicationController
 
   def countrydisasters
   	@country_disasters = Disaster.get_all_disasters
-  	render json: @country_disasters
-  end
-
-  def disasterdescriptions
-    @descriptions = Disaster.get_all_descriptions
-    render json: @descriptions
+  	@descriptions = Disaster.get_all_descriptions
+    render json: { title: @country_disasters, description: @descriptions }
   end
 
   def show
