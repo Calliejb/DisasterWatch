@@ -24,24 +24,36 @@ class Update < ActiveRecord::Base
 		end
 	end
 
+	
+	def self.compare(country)
+		
+		country
+		
+	end
+
+
+
 	def self.get_feedzilla_country_ids_by_country(country)
 		# Bring in country from controller
 		# if country matches feedzilla country return that subcategory_id
 		# use .map so it returns multiple
 		response = HTTParty.get("http://api.feedzilla.com/v1/categories/19/subcategories.json")
 		
-
+		response.each do |r|
+			r["display_subcategory_name"]
+		end
 
 		# country.each do |c|
-			response.map do |r|
-				feedzilla_country = r["display_subcategory_name"].partition("- ")[2]
-				if country == feedzilla_country
-					country_id = r["subcategory_id"]
-					HTTParty.get("http://api.feedzilla.com/v1/categories/19/subcategories/#{country_id}/articles.json?count=1&order=date")
-				else
-					HTTParty.get("http://api.feedzilla.com/v1/categories/19/subcategories/850/articles.json?count=1&order=date")
-				end
-			end
+			# response.each do |r|
+			# 	feedzilla_country = r["display_subcategory_name"].partition("- ")[2]
+				
+			# 	if country == feedzilla_country
+			# 		country_id = r["subcategory_id"]
+			# 		HTTParty.get("http://api.feedzilla.com/v1/categories/19/subcategories/#{country_id}/articles.json?count=1&order=date")
+			# 	else
+			# 		HTTParty.get("http://api.feedzilla.com/v1/categories/19/subcategories/850/articles.json?count=1&order=date")
+			# 	end
+			# end
 		# end
 	end
 

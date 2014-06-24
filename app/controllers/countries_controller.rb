@@ -1,6 +1,12 @@
 class CountriesController < ApplicationController
   def index
   	@countries = Country.where(:user_id => current_user)
+    
+    # @ups = @countries.map do |c|
+    #   Update.compare(c.name)
+    # end
+
+    @myupdates = Update.get_feedzilla_country_ids_by_country("Benin")
     # @countries = Country.all
   	# Something like this
 

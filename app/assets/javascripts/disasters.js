@@ -186,11 +186,11 @@ d3.json("countryjson", function(data) {
 	});
 });
 
-// //WATERRRR
-// svgmap.append("path")
-// 	.datum({type: "Sphere"})
-// 	.attr("class", "water")
-// 	.attr("d", path);
+//WATERRRR
+svgmap.append("path")
+	.datum({type: "Sphere"})
+	.attr("class", "water")
+	.attr("d", path);
 
 function returnCountryArray() {
 	console.log(followedCountries);
