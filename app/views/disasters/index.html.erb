@@ -13,6 +13,19 @@
 
 <div class = "row" id = "articles">
 
+<h2>1000 Deaths or More </h2>
+<% for i in 0..65 %>
+	<% if i % 7 == 3 %>
+		<h3><%= @conflicts[i] %></h3>
+	<% end %>
+<% end %>
+
+<h2>Less than 1000 Deaths/Year </h2>
+<% for i in 67..400 %>
+	<% if i % 7 == 3 %>
+		<h3><%= @conflicts[i] %></h3>
+	<% end %>
+<% end %>
 
 <% for i in 0..65 %>
 	<% if i % 7 == 3 %>

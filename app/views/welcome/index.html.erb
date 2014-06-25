@@ -25,10 +25,8 @@
 	</div>
 </div>
 
-<div class = "row">
-	<div class = "small-1 columns">
-	</div>
-	<div class = "small-9 columns">
+<div class = "row" id = "mapnewsbox">
+	<div class = "small-10 columns">
 		<img src="assets/world_map_med.png">
 	</div>
 	<div class = "small-2 columns">
@@ -58,20 +56,28 @@
 	</div>
 </div>
 
-<div class = "row">
-	<div class = "large-6 columns">
-		<ul class="large-block-grid-3">
-			<li><img src="assets/africa_icon.jpg"> <%= link_to "Africa News", africanews_path %></li>
-			<li><img src="assets/asia_icon.jpg"></li>
-			<li><img src="assets/europe_icon.jpg"></li>
-			<li><img src="assets/middle_east_icon.jpg"></li>
-			<li><img src="assets/north_america_icon.jpg"></li>
-			<li><img src="assets/central_america_icon.jpg"></li>
-			<li><img src="assets/south_america_icon.jpg"></li>
-			<li><img src="assets/oceania_icon.jpg"></li>
+<div class = "row" id = "regionnewsbox">
+	<div class = "small-10 columns">
+		<ul class="large-block-grid-4">
+			<li><img src="assets/africa_icon.jpg"><br>
+			<%= link_to "Africa News", africanews_path %></li>
+			<li><img src="assets/asia_icon.jpg"><br>
+			<%= link_to "Africa News", asianews_path %></li>
+			<li><img src="assets/europe_icon.jpg"><br>
+			<%= link_to "Europe News", europenews_path %></li>
+			<li><img src="assets/middle_east_icon.jpg"><br>
+			<%= link_to "Middle East News", middleeastnews_path %></li>
+			<li><img src="assets/north_america_icon.jpg"><br>
+			<%= link_to "North America News", northamericanews_path %></li>
+			<li><img src="assets/central_america_icon.jpg"><br>
+			<%= link_to "Central America News", centralamericanews_path %></li>
+			<li><img src="assets/south_america_icon.jpg"><br>
+			<%= link_to "South America News", southamericanews_path %></li>
+			<li><img src="assets/oceania_icon.jpg"><br>
+			<%= link_to "Oceania News", oceanianews_path %></li>
 		</ul>
 	</div>
-	<div class = "large-6 columns">
+	<div class = "small-2 columns">
 	</div>
 </div>
 
