@@ -189,7 +189,7 @@ function returnCountryArray() {
 		type: "POST",
 		url: "/countries",
 		//data: { country: { name: followedCountries[0] }},
-		data: { country: { name: followedCountries }},
+		data: { country: { name: JSON.stringify(followedCountries) }},
 		// Saves data as an array in name.. maybe could be worked with?
 
 		// data: 
