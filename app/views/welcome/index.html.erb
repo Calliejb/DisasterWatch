@@ -1,7 +1,7 @@
 
 
 <div>
-	<%= link_to "Africa News", africanews_path %>
+	
 	World news site: Stay informed. Follow news from specific countries or disasters.
 
 	Connect with organizations that are trying to help.
@@ -29,12 +29,7 @@
 	<div class = "small-1 columns">
 	</div>
 	<div class = "small-9 columns">
-		<% @updates["articles"].each do |u| %>
-			<h3><%= u["title"] %></h3> <br>
-			<h4 class = "subheader"><%= u["publish_date"] %></h4><br>
-			<p><%= u["summary"] %><p><br>
-			<a href= "#"><%= link_to nil, u["url"] %><br></a>
-		<% end %>
+		<img src="assets/world_map_med.png">
 	</div>
 	<div class = "small-2 columns">
 		<!-- Feedzilla Widget BEGIN -->
@@ -62,4 +57,25 @@
 		<!-- Feedzilla Widget END -->
 	</div>
 </div>
+
+<div class = "row">
+	<div class = "large-6 columns">
+		<ul class="large-block-grid-3">
+			<li><img src="assets/africa_icon.jpg"> <%= link_to "Africa News", africanews_path %></li>
+			<li><img src="assets/asia_icon.jpg"></li>
+			<li><img src="assets/europe_icon.jpg"></li>
+			<li><img src="assets/middle_east_icon.jpg"></li>
+			<li><img src="assets/north_america_icon.jpg"></li>
+			<li><img src="assets/central_america_icon.jpg"></li>
+			<li><img src="assets/south_america_icon.jpg"></li>
+			<li><img src="assets/oceania_icon.jpg"></li>
+		</ul>
+	</div>
+	<div class = "large-6 columns">
+	</div>
+</div>
+
+
+
+
 
