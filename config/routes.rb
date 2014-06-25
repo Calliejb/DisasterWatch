@@ -12,6 +12,16 @@ DisasterWatch::Application.routes.draw do
   get "/countryjson" => "disasters#countries"
   get "/countrydisasterjson" => "disasters#countrydisasters"
   get "/disasterdescriptionsjson" => "disasters#disasterdescriptions"
+  
+  get "/africanews" => "updates#show_africa"
+  get "/asianews" => "updates#show_asia"
+  get "/middleeastnews" => "updates#show_middle_east"
+  get "/northamericanews" => "updates#show_north_america"
+  get "/centralamericanews" => "updates#show_central_america"
+  get "/southamericanews" => "updates#show_south_america"
+  get "/oceanianews" => "updates#show_oceania"
+  get "/europenews" => "updates#show_europe"
+
   root 'welcome#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

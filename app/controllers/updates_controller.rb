@@ -15,7 +15,7 @@ class UpdatesController < ApplicationController
     secondname = secondstring.partition(',')[0];
     thirdstring = secondstring.partition(',')[2];
 
-    
+
 
 
     @names.partition(",").map do |n|
@@ -32,4 +32,37 @@ class UpdatesController < ApplicationController
 
   def show
   end
+
+  def show_africa
+    @africanews = Update.get_africa_updates
+  end
+
+  def show_asia
+    @asianews = Update.get_asia_updates
+  end
+
+  def show_middle_east
+    @middleeastnews = Update.get_middle_east_updates
+  end
+
+  def show_north_america
+    @northamericanews = Update.get_north_america_updates
+  end
+
+  def show_central_america
+    @centralamericanews = Update.get_central_america_updates
+  end
+
+  def show_south_america
+    @southamericanews = Update.get_south_america_updates
+  end
+
+  def show_oceania
+    @oceanianews = Update.get_oceania_updates
+  end
+
+  def show_europe
+    @europenews = Update.get_europe_updates
+  end
+
 end

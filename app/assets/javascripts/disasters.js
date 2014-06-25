@@ -126,21 +126,18 @@ d3.json("countryjson", function(data) {
 				console.log(dataString);
 
 				d3.select(this)
-					// .style("fill", "orange")
-					.html(countryName + "<br/>" + dataString)
-					.style("left", (d3.event.pageX + 10) + "px")
-					.style("top", (d3.event.pageY - 20) + "px");
+					.style("fill", "#6E8BA2");
 			}
 
 			function mouseOut(d) {
 				
-				// var value = d.properties.value
+				var value = d.properties.value;
 
-				// if (value && !country_clicked) {
-				// 	d3.select(this).style("fill", "steelblue");
-				// } else {
-				// 	d3.select(this).style("fill", "grey");
-				// };
+				if (value && !country_clicked) {
+					d3.select(this).style("fill", "steelblue");
+				} else {
+					d3.select(this).style("fill", "grey");
+				}
 
 			}
 

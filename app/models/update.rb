@@ -76,6 +76,38 @@ class Update < ActiveRecord::Base
 		# Takes the json data for disasters and pulls the string that gives the specific disaster data
 	end
 
+	def self.get_africa_updates
+		HTTParty.get("http://api.feedzilla.com/v1/categories/19/subcategories/828/articles.json?count=25&order=date")
+	end
+
+	def self.get_asia_updates
+		HTTParty.get("http://api.feedzilla.com/v1/categories/19/subcategories/885/articles.json?count=25&order=date")
+	end
+
+	def self.get_middle_east_updates
+		HTTParty.get("http://api.feedzilla.com/v1/categories/19/subcategories/976/articles.json?count=25&order=date")
+	end
+
+	def self.get_north_america_updates
+		HTTParty.get("http://api.feedzilla.com/v1/categories/19/subcategories/987/articles.json?count=25&order=date")
+	end
+
+	def self.get_central_america_updates
+		HTTParty.get("http://api.feedzilla.com/v1/categories/19/subcategories/990/articles.json?count=25&order=date")
+	end
+
+	def self.get_south_america_updates
+		HTTParty.get("http://api.feedzilla.com/v1/categories/19/subcategories/975/articles.json?count=25&order=date")
+	end
+
+	def self.get_oceania_updates
+		HTTParty.get("http://api.feedzilla.com/v1/categories/19/subcategories/908/articles.json?count=25&order=date")
+	end
+
+	def self.get_europe_updates
+		HTTParty.get("http://api.feedzilla.com/v1/categories/19/subcategories/941/articles.json?count=25&order=date")
+	end
+
 	# def self.get_rweb_updates
 	# 	response = HTTParty.get("http://api.rwlabs.org/v1/countries?limit=200")
 
