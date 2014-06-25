@@ -1,4 +1,5 @@
 
+//Renders map that shows disasters
 var color = "steelblue";
 
 var width = 800,
@@ -41,7 +42,7 @@ var svgmap = d3.select("#map")
 var countryTooltip = d3.select("#svgmap").append("div").attr("class", "countryTooltip"),
   countryList = d3.select("#svgmap").append("select").attr("name", "countries");
 
-var followedCountries = [];
+var selectedCountries = [];
 
 //Reliefweb data that lists countries with natural disasters
 d3.json("countryjson", function(data) {
@@ -146,37 +147,57 @@ d3.json("countryjson", function(data) {
 
 			function countryClicked(d) {
 
+				selectedCountries = [];
+				var countryName = d.properties.name;
+
+				var dataString;
+
+				//var countryInfo = d.properties.countryInfo;
+
+				if (d.properties.disastervalue) {
+					dataString = d.properties.disastervalue;
+				} else {
+					dataString = " ";
+				}
+
+				$("#disasters").html(countryName + "<br>" + dataString);
+				//ADD COUNTRY INFO HERE
+
 				console.log(d);
 
 				var country = d.properties.name;
 				var value = d.properties.value;
 
-				console.log(followedCountries.indexOf(country));
+				console.log(selectedCountries.indexOf(country));
 
-				if (followedCountries.indexOf(country) == -1) {
+				if (selectedCountries.indexOf(country) == -1) {
+
 					if (country) {
-						$(this).css({"fill": "green", "stroke": "darkgreen" });
+						$(this).css({"fill": "darkgreen" });
 					}
 
 					if (country && value) {
 						$(this).css({"fill": "lightblue"});
 					}
 					//Adds the country that the user wants to follow to the followedCountries array
-					followedCountries.push(country);
-					var countryIndex = followedCountries.indexOf(country);
-					d.properties.index = countryIndex;
-					console.log(followedCountries);
+					selectedCountries.push(country);
+					// var countryIndex = followedCountries.indexOf(country);
+					// d.properties.index = countryIndex;
+					// console.log(followedCountries);
+
 				} else {
-					if (country) {
-						$(this).css({"fill": "grey" });
-					}
+
+
+					// if (country) {
+					// 	$(this).css({"fill": "grey" });
+					// }
 					
-					if (country && value) {
-						$(this).css({"fill": "steelblue"});
-					}
-					//Removes the country from the array if not hightlighted
-					delete followedCountries[d.properties.index];
-					console.log(followedCountries);
+					// if (country && value) {
+					// 	$(this).css({"fill": "steelblue"});
+					// }
+					// //Removes the country from the array if not hightlighted
+					// delete followedCountries[d.properties.index];
+					// console.log(followedCountries);
 				}
 			}
 		});
@@ -191,20 +212,4 @@ svgmap.append("path")
 	.attr("class", "water")
 	.attr("d", path);
 
-//Ajax request that pushes my country array to my country model
-function returnCountryArray() {
-	console.log(followedCountries);
-	$.ajax({
-		type: "POST",
-		url: "/countries",
-		//data: { country: { name: followedCountries[0] }},
-		data: { country: { name: JSON.stringify(followedCountries) }},
-		// Saves data as an array in name.. maybe could be worked with?
-
-		// data: 
-		//	country: function() { for (var i = 0; i < followedCountries.length; i++) {
-		//			{ name: followedCountries[i] } }},
-		success: function() { alert("Success!"); }
-	});
-}
 

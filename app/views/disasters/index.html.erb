@@ -8,9 +8,8 @@
 
 <div id = "mapdata"></div>
 
-<div class = "row" id = "countryButton">
-	<button type="button" class="updateButton" onclick="returnCountryArray()">Select Country Updates</button>
-</div>
+<div id = "disasters"></div>
+
 
 <div class = "row" id = "articles">
 
@@ -22,17 +21,18 @@
 		<%= @conflicts[i] %>
 	<% elsif i % 7 == 1 %>
 		<%= @conflicts[i] %>
-	<% elsif i % 7 == 2 %>
-		<%= @conflicts[i] %>
 	<% end %>
 <% end %>
+
+<br>
+<br>
 
 <% for i in 67..400 %>
 	<% if i % 7 == 3 %>
 		<h3><%= @conflicts[i] %></h3>
-	<% elsif i % 7 == 1 %>
+	<% elsif i % 7 == 0 %>
 		<%= @conflicts[i] %>
-	<% elsif i % 7 == 2 %>
+	<% elsif i % 7 == 1 %>
 		<%= @conflicts[i] %>
 	<% end %>
 <% end %>

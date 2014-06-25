@@ -26,10 +26,14 @@
   font-family: sans-serif;
 }
 
-#countryButton {
+#disasters {
   position: relative;
-  top: 500px;
+  top:600px;
+  height: 300px;
+  width: 600px;
+  border: solid #ccc 2px;
 }
+
 
 #articles {
   position: relative;

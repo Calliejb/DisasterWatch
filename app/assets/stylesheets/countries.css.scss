@@ -2,4 +2,27 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.dmapcontainer {
+/*	background-color: #5E798C;*/
+  position: absolute;
+  top: 0px;
+}
+    
+#selectmap {
 
+}
+
+#mapselectdata {
+	position: relative;
+	left: 800px;
+	height: 300px;
+	width: 300px;
+	border: solid black 5px;
+}
+
+#countryButton {
+	position: relative;
+	top: 600px;
+	border: solid black 5px;
+	padding-left: 40px;
+}
