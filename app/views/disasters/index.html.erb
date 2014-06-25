@@ -1,26 +1,18 @@
 
-<div class = "mapcontainer row">
-	<div class = "columns-2 small">
-		<div id = "mapdata">
-		</div>
+<div class = "mapcontainer">
+		
+	<div id="map">
 	</div>
 
-	<div class = "columns-8 small">
-		<div id="map">
-		</div>
-	</div>
-
-	<div class = "columns-2 small">
-		<div id="selector">
-		</div>
-	</div>
 </div>
 
-<div class = "row">
+<div id = "mapdata"></div>
+
+<div class = "row" id = "countryButton">
 	<button type="button" class="updateButton" onclick="returnCountryArray()">Select Country Updates</button>
 </div>
 
-
+<div class = "row" id = "articles">
 
 
 <% for i in 0..65 %>
@@ -44,5 +36,7 @@
 		<%= @conflicts[i] %>
 	<% end %>
 <% end %>
+
+</div>
 
 

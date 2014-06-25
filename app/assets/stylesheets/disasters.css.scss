@@ -4,12 +4,39 @@
 
 .mapcontainer {
 /*	background-color: #5E798C;*/
+  position: absolute;
+}
+    
+#map {
+
 }
 
-#map {
-	width: 100%;
-	height: 800px;
+#mapdata {
+  position: relative;
+  top: 200px;
+  left: 800px;
+  height: 400px;
+  width: 400px;
+  background: "black";
+  padding: 5px;
+  text-align: left;
+  border: solid #ccc 1px;
+  color: #666;
+  font-size: 14px;
+  font-family: sans-serif;
 }
+
+#countryButton {
+  position: relative;
+  top: 500px;
+}
+
+#articles {
+  position: relative;
+  top: 700px;
+}
+
+
 
 .water {
   fill: #00248F;
@@ -19,7 +46,7 @@
   fill: #33CC33;
 }
 
-select {
+#selector {
   position: absolute;
   top: 20px;
   left: 580px;
@@ -39,11 +66,4 @@ select {
   color: #666;
   font-size: 14px;
   font-family: sans-serif;
-}
-
-#mapdata {
-	position: relative;
-	height: 300px;
-	width: 200px;
-	border: 2px solid black;
 }

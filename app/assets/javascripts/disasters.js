@@ -1,7 +1,7 @@
 
 var color = "steelblue";
 
-var width = 1000, 
+var width = 800,
 	height = 1000,
 	sens = 0.25,
 	focused;
@@ -36,11 +36,10 @@ var svgmap = d3.select("#map")
 			svgmap.selectAll(".focused").classed("focused", focused = false);
 	}));
 
-var mapdata = d3.select("#mapdata")
-	.append("svg");
+//var mapdata = d3.select("#map").append("div").attr("id", "mapdata");
 
-var countryTooltip = d3.select("#mapdata").append("div").attr("class", "countryTooltip"),
-  countryList = d3.select("#mapdata").append("select").attr("name", "countries");
+var countryTooltip = d3.select("#svgmap").append("div").attr("class", "countryTooltip"),
+  countryList = d3.select("#svgmap").append("select").attr("name", "countries");
 
 var followedCountries = [];
 
@@ -120,6 +119,8 @@ d3.json("countryjson", function(data) {
 				} else {
 					dataString = " ";
 				}
+
+				$("#mapdata").html(countryName + "<br>" + dataString);
 
 				console.log(dataString);
 
