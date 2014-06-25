@@ -126,14 +126,14 @@ d3.json("countryjson", function(data) {
 				console.log(dataString);
 
 				d3.select(this)
-					.style("fill", "#6E8BA2");
+					.style("fill", "orange");
 			}
 
 			function mouseOut(d) {
 				
 				var value = d.properties.value;
 
-				if (value && !country_clicked) {
+				if (value) {
 					d3.select(this).style("fill", "steelblue");
 				} else {
 					d3.select(this).style("fill", "grey");
