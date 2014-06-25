@@ -1,28 +1,16 @@
 
-<div class = "row">
-	<div class = "small-1 columns">
-	</div>
-	<div class = "small-9 columns">
-		<h1>NEWS UPDATES</h1>
-	</div>
-	<div class = "small-2 columns">
-	</div>
-</div>
+PERSONAL NEWSFEED GOES HERE
 
-<div class = "row">
-	<div class = "small-1 columns">
-	</div>
-	<div class = "small-9 columns">
-	<% @updates["articles"].each do |u| %>
-			<h3><%= u["title"] %></h3> <br>
-			<h4 class = "subheader"><%= u["publish_date"] %></h4><br>
-			<p><%= u["summary"] %><p><br>
-			<a href= "#"><%= link_to nil, u["url"] %><br></a>
-		<% end %>
-	</div>
-	<div class = "small-2 columns">
-	</div>
-</div>
+<h1>My Saved Countries </h1>
+
+<% @countries.each do |c| %>
+	<%= c.name %>
+<% end %>
+
+<%= @myupdates %>
+
+
+
 
 <%= @feedzillacountries %>
 

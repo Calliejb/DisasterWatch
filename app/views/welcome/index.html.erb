@@ -1,15 +1,42 @@
-<div class = "row">
-	<h1>BIG NEWS STORY</h1>
+
+
+<div>
+	World news site: Stay informed. Follow news from specific countries or disasters.
+
+	Connect with organizations that are trying to help.
 </div>
 
-<!-- Feedzilla Widget BEGIN -->
+<div>
+	<h3>Style this page by different categories of news stories</h3>
+</div>
+
+<div>
+	Picture of disasters map -- link to map
+</div>
 
 <div class = "row">
-
-	<div class= "column-10 small">
+	<div class = "small-1 columns">
 	</div>
+	<div class = "small-9 columns">
+		<h1>WORLD NEWS</h1>
+	</div>
+	<div class = "small-2 columns">
+	</div>
+</div>
 
-	<div class="column-2 small">
+<div class = "row">
+	<div class = "small-1 columns">
+	</div>
+	<div class = "small-9 columns">
+	<% @updates["articles"].each do |u| %>
+			<h3><%= u["title"] %></h3> <br>
+			<h4 class = "subheader"><%= u["publish_date"] %></h4><br>
+			<p><%= u["summary"] %><p><br>
+			<a href= "#"><%= link_to nil, u["url"] %><br></a>
+		<% end %>
+	</div>
+	<div class = "small-2 columns">
+		<!-- Feedzilla Widget BEGIN -->
 		<div class="feedzilla-news-widget feedzilla-28108022827655077" style="width:250px; padding-left: 30px; text-align: center; font-size: 11px; border: 0;">
 			<script type="text/javascript" src="http://widgets.feedzilla.com/news/iframe/js/widget.js"></script>
 			<script type="text/javascript">
@@ -35,26 +62,3 @@
 	</div>
 </div>
 
-
-
-
-<div>
-	World news site: Stay informed. Follow news from specific countries or disasters.
-
-	Connect with organizations that are trying to help.
-<div>
-
-Some other cool stuff over here
-</div>
-
-<div>
-	Style me like your french girls.
-</div>
-
-<div>
-	Sign up to follow news stories
-</div>
-
-<div>
-	Check out this map: link to map
-</div>

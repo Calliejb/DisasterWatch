@@ -50,11 +50,11 @@
 
         <!-- Left Nav Section -->
         <ul class="left">
-          <li><a href="#"><%= link_to "MAP", disasters_path %></a></li>
-          <li><a href="#"><%= link_to "ALL ORGANIZATIONS", organizations_path %></a></li>
-          <li><a href="#"><%= link_to "ALL NEWS", updates_path %></a></li>
+          <li><a href="#"><%= link_to "DISASTERS", disasters_path %></a></li>
+          <li><a href="#"><%= link_to "ORGANIZATIONS", organizations_path %></a></li>
           <% if user_signed_in? %>
-            <li><a href="#"><%= link_to "MY NEWSFEED", countries_path %></a></li>
+            <li><a href="#"><%= link_to "CHOOSE/UPDATE NEWSFEED", updates_path %></a></li>
+            <li><a href="#"><%= link_to "MY NEWSFEED", updates_path %></a></li>
           <% end %>
         </ul>
       </section>
