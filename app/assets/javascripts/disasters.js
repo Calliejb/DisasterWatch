@@ -110,8 +110,7 @@ d3.json("countryjson", function(data) {
 			function mouseOverCountry(d) {
 
 				var countryName = d.properties.name;
-
-				console.log(countryName);
+				var countryInfo = d.properties.info;
 
 				var dataString;
 
@@ -121,7 +120,7 @@ d3.json("countryjson", function(data) {
 					dataString = " ";
 				}
 
-				$("#mapdata").html(countryName + "<br>" + dataString);
+				$("#mapdata").html("<h2>" + countryName + "</h2> <br>" + "<p class = 'datastring'>" + countryInfo + "</p>");
 
 				console.log(dataString);
 
@@ -146,7 +145,6 @@ d3.json("countryjson", function(data) {
 
 				selectedCountries = [];
 				var countryName = d.properties.name;
-
 				var dataString;
 
 				//var countryInfo = d.properties.countryInfo;
@@ -157,7 +155,7 @@ d3.json("countryjson", function(data) {
 					dataString = " ";
 				}
 
-				$("#disasters").html(countryName + "<br>" + dataString);
+				$("#disasters").html("<h2>" + countryName + "</h2> <br>" + "<p class = 'datastring'>" + dataString + "</p>");
 				//ADD COUNTRY INFO HERE
 
 				console.log(d);

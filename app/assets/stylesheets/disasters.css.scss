@@ -2,25 +2,33 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.disastertitle {
+  font-family: 'Helvetica';
+}
+
+h2 {
+  font-family: 'Libre Baskerville', serif;
+}
+
+.datastring {
+  font-family: 'Vollkorn', serif;
+}
+
 .mapcontainer {
 /*	background-color: #5E798C;*/
   position: absolute;
-}
-    
-#map {
-
+  top: 120px;
+  left: 40px;
 }
 
 #mapdata {
   position: relative;
-  top: 200px;
-  left: 800px;
-  height: 400px;
-  width: 400px;
-  background: "black";
+  top: 20px;
+  left: 880px;
+  height: 500px;
+  width: 530px;
   padding: 5px;
   text-align: left;
-  border: solid #ccc 1px;
   color: #666;
   font-size: 14px;
   font-family: sans-serif;
@@ -28,9 +36,10 @@
 
 #disasters {
   position: relative;
-  top:600px;
-  height: 300px;
-  width: 600px;
+  top:400px;
+  left: 100px;
+  height: 400px;
+  width: 750px;
   border: solid #ccc 2px;
 }
 
