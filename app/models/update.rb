@@ -90,7 +90,7 @@ class Update < ActiveRecord::Base
 	end
 
 	def self.get_north_america_updates
-		HTTParty.get("http://api.feedzilla.com/v1/categories/19/subcategories/987/articles.json?count=25&order=date")
+		HTTParty.get("http://api.feedzilla.com/v1/categories/19/subcategories/1015/articles.json?count=25&order=date")
 	end
 
 	def self.get_central_america_updates

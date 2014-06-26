@@ -94,12 +94,17 @@ d3.json("countryjson", function(data) {
 				.style("fill", function(d) {
 				//Data value
 				var value = d.properties.value;
+				var conflictvalue = d.properties.war;
 					if (value) {
 					//If value exists…
-					return color;
-					} else {
+						return color;
+					} else if (conflictvalue) {
 					//If value is undefined…
-					return "grey";
+						return "#911919";
+					} else if (value & conflictvalue) {
+						return "orange";
+					} else {
+						return "grey";
 					}
 				})
 				.on("click", countryClicked)
@@ -131,9 +136,12 @@ d3.json("countryjson", function(data) {
 			function mouseOut(d) {
 				
 				var value = d.properties.value;
+				var conflictvalue = d.properties.war;
 
 				if (value) {
 					d3.select(this).style("fill", "steelblue");
+				} else if (conflictvalue) {
+					d3.select(this).style("fill", "#911919");
 				} else {
 					d3.select(this).style("fill", "grey");
 				}
@@ -146,16 +154,25 @@ d3.json("countryjson", function(data) {
 				selectedCountries = [];
 				var countryName = d.properties.name;
 				var dataString;
+				var conflictTitle;
 
 				//var countryInfo = d.properties.countryInfo;
 
 				if (d.properties.disastervalue) {
 					dataString = d.properties.disastervalue;
 				} else {
-					dataString = " ";
+					dataString = "";
 				}
 
-				$("#disasters").html("<h2>Humanitarian Disasters in " + countryName + "</h2> <br>" + "<p class = 'datastring'>" + dataString + "</p>");
+				if (d.properties.war) {
+					conflictTitle = d.properties.war.title;
+					conflictInfo = "This conflict began in " + d.properties.war.began + " and in 2013 there were " + d.properties.war.deaths + " casualties.";
+				} else {
+					conflictTitle = "";
+					conflictInfo = "";
+				}
+
+				$("#disasters").html("<h2>" + countryName + "</h2> <br>" + "<p class = 'datastring'>" + dataString + "</p>" + "<h4>" + conflictTitle + "</h4> <p>" + conflictInfo + "</p>");
 				//ADD COUNTRY INFO HERE
 
 				console.log(d);

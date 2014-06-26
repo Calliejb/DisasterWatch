@@ -1,5 +1,7 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>My Profile</h1>
 
+<h2 class="title"><%= @user.email %></h2>
+<h5>Joined on <%= @user.created_at.to_formatted_s(:long) %>.</h5>
 
+<p><%= link_to "Edit Profile", edit_user_path(current_user) %></p>
 <p><%= link_to "Add An Organization",  new_organization_path %><p>
