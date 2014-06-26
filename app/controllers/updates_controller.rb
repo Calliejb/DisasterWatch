@@ -3,11 +3,11 @@ class UpdatesController < ApplicationController
 
   	countries = Country.where(:user_id => current_user).last(10)
 
-    # @myupdates = countries.map do |c|
-    #   Update.get_feedzilla_country_ids_by_country(c.name)
-    # end
+    @myupdates = countries.map do |c|
+      Update.get_feedzilla_country_ids_by_country(c.name)
+    end
 
-    @myupdates = Update.get_feedzilla_country_ids_by_country("Benin")
+    # @myupdates = Update.get_feedzilla_country_ids_by_country("Benin")
   	
   	@updates = Update.get_all_updates
 

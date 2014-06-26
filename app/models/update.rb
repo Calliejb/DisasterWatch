@@ -24,13 +24,6 @@ class Update < ActiveRecord::Base
 		end
 	end
 
-	
-	def self.compare(country)
-		
-		country
-		
-	end
-
 
 
 	def self.get_feedzilla_country_ids_by_country(country)
@@ -39,10 +32,11 @@ class Update < ActiveRecord::Base
 		# use .map so it returns multiple
 		response = HTTParty.get("http://api.feedzilla.com/v1/categories/19/subcategories.json")
 		
-		response.each do |r|
+		response.map do |r|
 			name = r["display_subcategory_name"].partition("- ")[2]
+			country_id = r["subcategory_id"]
 			if country == name
-				name
+				HTTParty.get("http://api.feedzilla.com/v1/categories/19/subcategories/#{country_id}/articles.json?count=2&order=date")
 			end
 		end
 

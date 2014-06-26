@@ -4,7 +4,11 @@ PERSONAL NEWSFEED GOES HERE
 <h1>My Saved Countries </h1>
 
 
-<%= @myupdates %>
+<% @myupdates.each do |m| %>
+
+	<%= m %>
+
+<% end %>
 
 
 
