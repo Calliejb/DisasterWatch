@@ -2,8 +2,14 @@ class OrganizationsController < ApplicationController
   respond_to :json, :html
 
   def index
-  	@organizations = Organization.all
+  	
+    @rworganizations1 = Organization.get_orgs1
+    @rworganizations2 = Organization.get_orgs2
+    @rworganizations3 = Organization.get_orgs3
+
+    @organizations = Organization.all
   	respond_with @organizations
+
   end
 
   def new

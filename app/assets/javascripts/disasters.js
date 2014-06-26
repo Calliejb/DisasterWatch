@@ -155,7 +155,7 @@ d3.json("countryjson", function(data) {
 					dataString = " ";
 				}
 
-				$("#disasters").html("<h2>" + countryName + "</h2> <br>" + "<p class = 'datastring'>" + dataString + "</p>");
+				$("#disasters").html("<h2>Humanitarian Disasters in " + countryName + "</h2> <br>" + "<p class = 'datastring'>" + dataString + "</p>");
 				//ADD COUNTRY INFO HERE
 
 				console.log(d);

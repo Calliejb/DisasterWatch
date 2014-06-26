@@ -1,2 +1,22 @@
 <h1>LIST OF ALL ORGANIZATIONS</h1>
-<p>Find me in app/views/organizations/index.html.erb</p>
+
+
+<div class = "row">
+	<div class = "small-6 columns">
+		<% @rworganizations1.each do |r| %>
+			<%= r %> <br>
+		<% end %>
+		<% @rworganizations2.each do |r| %>
+			<%= r %> <br>
+		<% end %>
+		<% @rworganizations3.each do |r| %>
+			<%= r %> <br>
+		<% end %>
+	</div>
+	<div class = "small-6 columns">
+		<% @organizations.each do |o| %>
+			<%= o.name %>
+		<% end %>
+	</div>
+</div>
+
