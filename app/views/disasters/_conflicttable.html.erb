@@ -1,0 +1,78 @@
+<h2>Conflicts with 1000 Deaths or More in 2013 </h2>
+<table>
+  <thead>
+    <tr>
+      <th width="300">Country</th>
+      <th width= "300">Year Conflict Started</th>
+      <th width="300">Conflict</th>
+      <th width="150">Number of Casualties: 2013</th>
+      <th width="150">Number of Casualties: Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+	      	<% for i in 0..65 %>
+				<td>
+					<% if i % 7 == 3 %>
+						<h4><%= @conflicts[i] %></h4>
+					<% end %>
+				</td>
+			<% end %>
+
+	      	<% for i in 0..65 %>
+				<td>
+					<% if i % 7 == 0 %>
+						<%= @conflicts[i] %>
+					<% end %>
+				</td>
+			<% end %>
+		<td>
+			<% for i in 0..65 %>
+				<% if i % 7 == 1 %>
+					<%= @conflicts[i] %>
+				<% end %>
+			<% end %>
+		</td>
+		<td>
+			<% for i in 0..65 %>
+				<% if i % 7 == 1 %>
+					<%= @conflicts[i] %>
+				<% end %>
+			<% end %>
+		</td>
+    </tr>
+</table>
+
+
+<h2>Conflicts With Less than 1000 Deaths in 2013 </h2>
+
+<table>
+  <thead>
+    <tr>
+      <th width="300">Country</th>
+      <th width= "300">Year Conflict Started</th>
+      <th width="300">Conflict</th>
+      <th width="150">Number of Casualties: 2013</th>
+      <th width="150">Number of Casualties: Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      	<td>
+	      	<% for i in 67..400 %>
+				<% if i % 7 == 3 %>
+					<h4><%= @conflicts[i] %></h4>
+				<% end %>
+			<% end %>
+		</td>
+      	<% for i in 67..400 %>
+			<% if i % 7 == 0 %>
+				<td><%= @conflicts[i] %></td>
+			<% elsif i % 7 == 1 %>
+				<td><%= @conflicts[i] %></td>
+			<% end %>
+		<% end %>
+    </tr>
+</table>
+
+</div>
