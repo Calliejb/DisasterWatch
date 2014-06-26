@@ -7,6 +7,43 @@
 	margin-left: 10%;
 }
 
+.countrylist {
+  background-color: tan;
+  text-align: center;
+  border-radius: 10px;
+  font-family: 'Ubuntu', sans-serif;
+  box-shadow: 6px 6px 3px #888888;
+  margin-bottom: 10px;
+  padding: 10px 10px 2px 10px;
+}
+
+.personalheadline {
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 10px;
+  box-shadow: 6px 6px 3px #888888;
+
+  background: linear-gradient(
+     tan, tan 50%, #333 50%, #333
+  );
+    background-size: 100% 200%;
+    transition: all 0.2s ease;
+}
+
+.personalheadline:hover {
+  background-position: 100% 100%;
+}
+
+.personalheadline:hover h3 {
+  color: steelblue;
+}
+.personalheadline:hover h4 {
+  color: white;
+}
+.personalheadline:hover p {
+  color: #999;
+}
+
 .headlinetitle {
 	text-align: center;
 	font-family: 'Ubuntu', sans-serif;
