@@ -1,4 +1,14 @@
-<h1>My Newsfeed </h1>
+<div class = "row">
+	<h1>My Personal Newsfeed</h1>
+</div>
+
+<div class = "row">
+	<ul class = "inline-list">
+		<% @countries.each do |c| %>
+			<li><%= c.name %></li>
+		<% end %>
+	</ul>
+</div>
 
 <div class = "row">
 
