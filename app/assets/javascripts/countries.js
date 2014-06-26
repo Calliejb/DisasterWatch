@@ -111,15 +111,12 @@ d3.json("countryjson", function(data) {
 					dataString = " ";
 				}
 
-				$("#mapselectdata").html(countryName + "<br>" + dataString);
+				$("#countryName").html("<h2>" + countryName + "</h2>");
 
 				console.log(dataString);
 
-				d3.select(this)
-					// .style("fill", "orange")
-					.html(countryName + "<br/>" + dataString)
-					.style("left", (d3.event.pageX + 10) + "px")
-					.style("top", (d3.event.pageY - 20) + "px");
+				// d3.select(this)
+				// 	.style("fill", "orange");
 			}
 
 			function mouseOut(d) {
@@ -143,6 +140,8 @@ d3.json("countryjson", function(data) {
 				var value = d.properties.value;
 
 				console.log(followedCountries.indexOf(country));
+
+				$("#mapselectdata").append("<h2>" + country + "</h2> <br>");
 
 				if (followedCountries.indexOf(country) == -1) {
 					if (country) {
@@ -189,7 +188,55 @@ function returnCountryArray() {
 		type: "POST",
 		url: "/countries",
 		//data: { country: { name: followedCountries[0] }},
-		data: { country: { name: JSON.stringify(followedCountries) }},
+		data: { country: { name: followedCountries[0] }},
+		// Saves data as an array in name.. maybe could be worked with?
+
+		// data: 
+		//	country: function() { for (var i = 0; i < followedCountries.length; i++) {
+		//			{ name: followedCountries[i] } }},
+		//success: function() { alert("Success!"); }
+	});
+	$.ajax({
+		type: "POST",
+		url: "/countries",
+		//data: { country: { name: followedCountries[0] }},
+		data: { country: { name: followedCountries[1] }},
+		// Saves data as an array in name.. maybe could be worked with?
+
+		// data: 
+		//	country: function() { for (var i = 0; i < followedCountries.length; i++) {
+		//			{ name: followedCountries[i] } }},
+		// success: function() { alert("Success!"); }
+	});
+	$.ajax({
+		type: "POST",
+		url: "/countries",
+		//data: { country: { name: followedCountries[0] }},
+		data: { country: { name: followedCountries[2] }},
+		// Saves data as an array in name.. maybe could be worked with?
+
+		// data: 
+		//	country: function() { for (var i = 0; i < followedCountries.length; i++) {
+		//			{ name: followedCountries[i] } }},
+		// success: function() { alert("Success!"); }
+	});
+	$.ajax({
+		type: "POST",
+		url: "/countries",
+		//data: { country: { name: followedCountries[0] }},
+		data: { country: { name: followedCountries[3] }},
+		// Saves data as an array in name.. maybe could be worked with?
+
+		// data: 
+		//	country: function() { for (var i = 0; i < followedCountries.length; i++) {
+		//			{ name: followedCountries[i] } }},
+		// success: function() { alert("Success!"); }
+	});
+	$.ajax({
+		type: "POST",
+		url: "/countries",
+		//data: { country: { name: followedCountries[0] }},
+		data: { country: { name: followedCountries[4] }},
 		// Saves data as an array in name.. maybe could be worked with?
 
 		// data: 
@@ -197,5 +244,66 @@ function returnCountryArray() {
 		//			{ name: followedCountries[i] } }},
 		success: function() { alert("Success!"); }
 	});
-	$("#mapselectdata").html(followedCountries);
+		$.ajax({
+		type: "POST",
+		url: "/countries",
+		//data: { country: { name: followedCountries[0] }},
+		data: { country: { name: followedCountries[5] }},
+		// Saves data as an array in name.. maybe could be worked with?
+
+		// data: 
+		//	country: function() { for (var i = 0; i < followedCountries.length; i++) {
+		//			{ name: followedCountries[i] } }},
+		//success: function() { alert("Success!"); }
+	});
+	$.ajax({
+		type: "POST",
+		url: "/countries",
+		//data: { country: { name: followedCountries[0] }},
+		data: { country: { name: followedCountries[6] }},
+		// Saves data as an array in name.. maybe could be worked with?
+
+		// data: 
+		//	country: function() { for (var i = 0; i < followedCountries.length; i++) {
+		//			{ name: followedCountries[i] } }},
+		// success: function() { alert("Success!"); }
+	});
+	$.ajax({
+		type: "POST",
+		url: "/countries",
+		//data: { country: { name: followedCountries[0] }},
+		data: { country: { name: followedCountries[7] }},
+		// Saves data as an array in name.. maybe could be worked with?
+
+		// data: 
+		//	country: function() { for (var i = 0; i < followedCountries.length; i++) {
+		//			{ name: followedCountries[i] } }},
+		// success: function() { alert("Success!"); }
+	});
+	$.ajax({
+		type: "POST",
+		url: "/countries",
+		//data: { country: { name: followedCountries[0] }},
+		data: { country: { name: followedCountries[8] }},
+		// Saves data as an array in name.. maybe could be worked with?
+
+		// data: 
+		//	country: function() { for (var i = 0; i < followedCountries.length; i++) {
+		//			{ name: followedCountries[i] } }},
+		// success: function() { alert("Success!"); }
+	});
+	$.ajax({
+		type: "POST",
+		url: "/countries",
+		//data: { country: { name: followedCountries[0] }},
+		data: { country: { name: followedCountries[9] }},
+		// Saves data as an array in name.. maybe could be worked with?
+
+		// data: 
+		//	country: function() { for (var i = 0; i < followedCountries.length; i++) {
+		//			{ name: followedCountries[i] } }},
+		success: function() { alert("Success!"); }
+	});
+
+	$("#countryalert").html("<h3> Your country selection has been saved!</h3>");
 }

@@ -1,6 +1,6 @@
 class CountriesController < ApplicationController
   def index
-  	@countries = Country.where(:user_id => current_user)
+  	@countries = Country.where(:user_id => current_user).limit(1)
     
     # @ups = @countries.map do |c|
     #   Update.compare(c.name)

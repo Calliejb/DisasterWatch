@@ -37,8 +37,15 @@ class Update < ActiveRecord::Base
 		# Bring in country from controller
 		# if country matches feedzilla country return that subcategory_id
 		# use .map so it returns multiple
-		# response = HTTParty.get("http://api.feedzilla.com/v1/categories/19/subcategories.json")
+		response = HTTParty.get("http://api.feedzilla.com/v1/categories/19/subcategories.json")
 		
+		response.each do |r|
+			name = r["display_subcategory_name"].partition("- ")[2]
+			if country == name
+				name
+			end
+		end
+
 		# country.map do |c|
 		# 	c.name
 		# end

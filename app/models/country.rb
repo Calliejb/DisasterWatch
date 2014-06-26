@@ -6,6 +6,8 @@ class Country < ActiveRecord::Base
 	belongs_to :user
 	has_many :updates
 
+	serialize :names, Array
+
 
 	def self.get_feedzilla_countries
 		response = HTTParty.get("http://api.feedzilla.com/v1/categories/19/subcategories.json")

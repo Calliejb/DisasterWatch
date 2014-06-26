@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140623033114) do
+ActiveRecord::Schema.define(version: 20140626022925) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20140623033114) do
     t.datetime "updated_at"
     t.string   "feedzillaid"
     t.integer  "user_id"
+    t.text     "names"
   end
 
   add_index "countries", ["user_id"], name: "index_countries_on_user_id", using: :btree
