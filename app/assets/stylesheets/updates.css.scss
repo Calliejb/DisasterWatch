@@ -6,3 +6,32 @@
 .regional {
 	margin-left: 10%;
 }
+
+.headlinetitle {
+	text-align: center;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+.worldheadline {
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 10px;
+  background: linear-gradient(
+     white, white 50%, #333 50%, #333
+  );
+  background-size: 100% 200%;
+  transition: all 0.2s ease;
+}
+
+.worldheadline:hover {
+  background-position: 100% 100%;
+}
+.worldheadline:hover h3 {
+  color: #48ad26;
+}
+.worldheadline:hover h4 {
+  color: white;
+}
+.worldheadline:hover p {
+  color: #999;
+}

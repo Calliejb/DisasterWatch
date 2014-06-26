@@ -1,14 +1,25 @@
+<h1>My Newsfeed </h1>
 
-PERSONAL NEWSFEED GOES HERE
+<div class = "row">
 
-<h1>My Saved Countries </h1>
+	<% @myupdates.each do |mu| %>
+		<% mu.each do |m| %>
+			<% if m != nil %>
+				<div class = "headline">
+					<% m["articles"].each do |article| %> 
+						<h3><%= article["title"] %></h3>
+						<h4 class = "subheader"><%= article["publish_date"] %></h4>
+						<p><%= article["summary"] %><p>
+						<a href= "#"><%= link_to nil, article["url"] %></a><br>
+					<% end %>
+				</div>
+			<% end %>
+		<% end %>
+
+	<% end %>
+</div>
 
 
-<% @myupdates.each do |m| %>
-
-	<%= m %>
-
-<% end %>
 
 
 

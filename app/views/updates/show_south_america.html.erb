@@ -1,11 +1,11 @@
 <%= render 'regional' %>
 
 <div class = "row">
-	<h1 class = "headlinetitle">Headlines from the Middle East</h1>
+	<h1 class = "headlinetitle">Headlines from South America</h1>
 </div>
 
 <div class = "row">
-	<% @middleeastnews["articles"].each do |u| %>
+	<% @southamericanews["articles"].each do |u| %>
 		<div class = "worldheadline">
 			<h3><%= u["title"] %></h3> <br>
 			<h4 class = "subheader"><%= u["publish_date"] %></h4><br>
