@@ -107,6 +107,7 @@ d3.json("countryjson", function(data) {
 						return "grey";
 					}
 				})
+				.style("stroke", "#544E4E")
 				.on("click", countryClicked)
 				.on("mouseover", mouseOverCountry)
 				.on("mouseout", mouseOut);

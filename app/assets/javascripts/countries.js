@@ -84,14 +84,20 @@ d3.json("countryjson", function(data) {
 				.style("fill", function(d) {
 				//Data value
 				var value = d.properties.value;
+				var conflictvalue = d.properties.war;
 					if (value) {
 					//If value exists…
-					return color;
-					} else {
+						return color;
+					} else if (conflictvalue) {
 					//If value is undefined…
-					return "grey";
+						return "#911919";
+					} else if (value & conflictvalue) {
+						return "orange";
+					} else {
+						return "grey";
 					}
 				})
+				.style("stroke", "#544E4E")
 				.on("click", countryClicked)
 				.on("mouseover", mouseOverCountry)
 				.on("mouseout", mouseOut);
