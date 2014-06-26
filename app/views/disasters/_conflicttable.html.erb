@@ -9,31 +9,25 @@
     </tr>
   </thead>
   <tbody>
+  	<tr>
     	<% for i in 0..65 %>
-    	    <tr>
-				<td>
 					<% if i % 7 == 0 %>
-						<h4><%= @conflicts[i] %></h4>
+						<td> <h4><%= @conflicts[i] %></h4></td>
 					<% end %>
-				</td>
-
-				<td>
+				</tr>
+				<tr>
 					<% if i % 7 == 1 %>
-						<%= @conflicts[i] %>
+						<td><%= @conflicts[i] %></td>
 					<% end %>
-				</td>
-				<td>
+				</tr>
 					<% if i % 7 == 2 %>
-						<%= @conflicts[i] %>
+						<td><%= @conflicts[i] %></td>
 					<% end %>
-				</td>
-				<td>
 					<% if i % 7 == 3 %>
-						<%= @conflicts[i] %>
+						<td><%= @conflicts[i] %></td>
 					<% end %>
-				</td>
-			</tr>
 		<% end %>
+	</tr>
 	</tbody>
 </table>
 
@@ -51,22 +45,27 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      	<td>
-	      	<% for i in 67..400 %>
-				<% if i % 7 == 3 %>
-					<h4><%= @conflicts[i] %></h4>
-				<% end %>
-			<% end %>
-		</td>
-      	<% for i in 67..400 %>
-			<% if i % 7 == 0 %>
-				<td><%= @conflicts[i] %></td>
-			<% elsif i % 7 == 1 %>
-				<td><%= @conflicts[i] %></td>
-			<% end %>
+  	<tr>
+    	<% for i in 0..65 %>
+					<% if i % 7 == 0 %>
+						<td> <h4><%= @conflicts[i] %></h4></td>
+					<% end %>
+				</tr>
+				<tr>
+					<% if i % 7 == 1 %>
+						<td><%= @conflicts[i] %></td>
+					<% end %>
+				</tr>
+					<% if i % 7 == 2 %>
+						<td><%= @conflicts[i] %></td>
+					<% end %>
+					<% if i % 7 == 3 %>
+						<td><%= @conflicts[i] %></td>
+					<% end %>
 		<% end %>
-    </tr>
+	</tr>
+	</tbody>
+
 </table>
 
 </div>

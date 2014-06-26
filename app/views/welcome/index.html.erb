@@ -13,17 +13,13 @@
 <div class = "row" id = "mapnewsbox">
 	<div class = "small-10 columns">
 		<div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 600px; height: 300px;">
-			<!-- Slides Container -->
-			<div u="slides" style="cursor: move; position: absolute; overflow: hidden; left: 0px; top: 0px; width: 600px; height: 300px;">
-			<div>
-			    <img u="image" src="assets/world_map_med.png" />
-			        <div u="caption" t="transition_name1" style="position: absolute; top: 30px; left: 30px; width: 50px;height: 50px;">
-			        <!-- Any HTML Content Here -->
-			    </div>
-			</div>
-			<div><img u="image" src="assets/hands.jpg" /></div>
-			</div>
-		</div>
+    <!-- Slides Container -->
+    <div u="slides" style="cursor: move; position: absolute; overflow: hidden; left: 0px; top: 0px; width: 600px; height: 300px;">
+        <div><img u="image" src="assets/hands.jpg" /></div>
+        <div><img u="image" src="assets/world_map_med.png" /></div>
+        <div><img u="image" src="assets/humanitarian.jpeg" /></div>
+    </div>
+</div>
 	</div>
 	<div class = "small-2 columns">
 		<!-- Feedzilla Widget BEGIN -->
@@ -78,30 +74,6 @@
 </div>
 
 
-<script>
-    jQuery(document).ready(function ($) {
-        //define random caption transitions, if a caption specifies '*' as transition,
-        //it will choose transition randomly every time from following transition array
-        var _CaptionTransitions = [{code1}, {code2} ...];
-        //use following line instead if there is no caption plays random transition
-        //var _CaptionTransitions = [];
-        
-        //define named transitions for caption that plays specified transition
-        _CaptionTransitions["transtion_name1"] = { code1 };
-        _CaptionTransitions["transtion_name2"] = { code2 };
-        _CaptionTransitions["transtion_name3"] = { code3 };
-        _CaptionTransitions["transtion_name4"] = { code4 };
-        var options = {
-            $CaptionSliderOptions: {
-                $Class: $JssorCaptionSlider$,
-                $CaptionTransitions: _CaptionTransitions,
-                $PlayInMode: 1,
-                $PlayOutMode: 3
-            },
-        };
-        var jssor_slider1 = new $JssorSlider$('slider1_container', options);
-    });
-</script>
 
 
 
