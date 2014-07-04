@@ -190,126 +190,13 @@ svgselectmap.append("path")
 //Ajax request that pushes my country array to my country model
 function returnCountryArray() {
 	console.log(followedCountries);
-	$.ajax({
-		type: "POST",
-		url: "/countries",
-		//data: { country: { name: followedCountries[0] }},
-		data: { country: { name: followedCountries[0] }},
-		// Saves data as an array in name.. maybe could be worked with?
-
-		// data: 
-		//	country: function() { for (var i = 0; i < followedCountries.length; i++) {
-		//			{ name: followedCountries[i] } }},
-		//success: function() { alert("Success!"); }
-	});
-	$.ajax({
-		type: "POST",
-		url: "/countries",
-		//data: { country: { name: followedCountries[0] }},
-		data: { country: { name: followedCountries[1] }},
-		// Saves data as an array in name.. maybe could be worked with?
-
-		// data: 
-		//	country: function() { for (var i = 0; i < followedCountries.length; i++) {
-		//			{ name: followedCountries[i] } }},
-		// success: function() { alert("Success!"); }
-	});
-	$.ajax({
-		type: "POST",
-		url: "/countries",
-		//data: { country: { name: followedCountries[0] }},
-		data: { country: { name: followedCountries[2] }},
-		// Saves data as an array in name.. maybe could be worked with?
-
-		// data: 
-		//	country: function() { for (var i = 0; i < followedCountries.length; i++) {
-		//			{ name: followedCountries[i] } }},
-		// success: function() { alert("Success!"); }
-	});
-	$.ajax({
-		type: "POST",
-		url: "/countries",
-		//data: { country: { name: followedCountries[0] }},
-		data: { country: { name: followedCountries[3] }},
-		// Saves data as an array in name.. maybe could be worked with?
-
-		// data: 
-		//	country: function() { for (var i = 0; i < followedCountries.length; i++) {
-		//			{ name: followedCountries[i] } }},
-		// success: function() { alert("Success!"); }
-	});
-	$.ajax({
-		type: "POST",
-		url: "/countries",
-		//data: { country: { name: followedCountries[0] }},
-		data: { country: { name: followedCountries[4] }},
-		// Saves data as an array in name.. maybe could be worked with?
-
-		// data: 
-		//	country: function() { for (var i = 0; i < followedCountries.length; i++) {
-		//			{ name: followedCountries[i] } }},
-		success: function() { alert("Success!"); }
-	});
+	for (i = 0; i < followedCountries.length; i++) {
 		$.ajax({
-		type: "POST",
-		url: "/countries",
-		//data: { country: { name: followedCountries[0] }},
-		data: { country: { name: followedCountries[5] }},
-		// Saves data as an array in name.. maybe could be worked with?
-
-		// data: 
-		//	country: function() { for (var i = 0; i < followedCountries.length; i++) {
-		//			{ name: followedCountries[i] } }},
-		//success: function() { alert("Success!"); }
-	});
-	$.ajax({
-		type: "POST",
-		url: "/countries",
-		//data: { country: { name: followedCountries[0] }},
-		data: { country: { name: followedCountries[6] }},
-		// Saves data as an array in name.. maybe could be worked with?
-
-		// data: 
-		//	country: function() { for (var i = 0; i < followedCountries.length; i++) {
-		//			{ name: followedCountries[i] } }},
-		// success: function() { alert("Success!"); }
-	});
-	$.ajax({
-		type: "POST",
-		url: "/countries",
-		//data: { country: { name: followedCountries[0] }},
-		data: { country: { name: followedCountries[7] }},
-		// Saves data as an array in name.. maybe could be worked with?
-
-		// data: 
-		//	country: function() { for (var i = 0; i < followedCountries.length; i++) {
-		//			{ name: followedCountries[i] } }},
-		// success: function() { alert("Success!"); }
-	});
-	$.ajax({
-		type: "POST",
-		url: "/countries",
-		//data: { country: { name: followedCountries[0] }},
-		data: { country: { name: followedCountries[8] }},
-		// Saves data as an array in name.. maybe could be worked with?
-
-		// data: 
-		//	country: function() { for (var i = 0; i < followedCountries.length; i++) {
-		//			{ name: followedCountries[i] } }},
-		// success: function() { alert("Success!"); }
-	});
-	$.ajax({
-		type: "POST",
-		url: "/countries",
-		//data: { country: { name: followedCountries[0] }},
-		data: { country: { name: followedCountries[9] }},
-		// Saves data as an array in name.. maybe could be worked with?
-
-		// data: 
-		//	country: function() { for (var i = 0; i < followedCountries.length; i++) {
-		//			{ name: followedCountries[i] } }},
-		success: function() { alert("Success!"); }
-	});
+			type: "POST",
+			url: "/countries",
+			data: { country: { name: followedCountries[i] }},
+		});
+	}
 
 	$("#countryalert").html("<h3> Your country selection has been saved!</h3>");
 }
