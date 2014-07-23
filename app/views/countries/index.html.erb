@@ -1,22 +1,37 @@
-<div class = "countrytitle">
-	<h1> Choose Up To 10 Countries To Follow </h1>
 
-	<button type="button" class="updateButton" onclick="returnCountryArray()">Select Country Updates</button> 
+<div class = "row">
+	<div class = "countrytitle">
+		<h1> Choose Countries To Follow </h1>
+
+		<button type="button" class="updateButton" onclick="returnCountryArray()">Select Country Updates</button> 
+	</div>
 </div>
 
-<div id = "countryButton">
-	<div id = "countryName"></div>
+<div class = "row">
+	<div id = "countryButton">
+		<div id = "countryName"></div>
+	</div>
 </div>
 
-<div class = "mapcontainer">
-		
-	<div id="selectmap">
+<div class = "row fullWidth">
+	
+	
+
+	<div class = "large-6 column small-6 column">
+		<div class = "mapcontainer">			
+			<div id="selectmap">
+			</div>
+		</div>
+	</div>
+
+	<div class = "large-6 column small-6 column"> 
+		<div id = "countryalert"></div>
+		<div id = "mapselectdata"></div>
 	</div>
 
 </div>
 
-<div id = "countryalert"></div>
-<div id = "mapselectdata"></div>
+
 
 
 
