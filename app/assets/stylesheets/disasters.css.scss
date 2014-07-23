@@ -2,9 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.fullWidth {
+   width: 100%;
+   margin-left: auto;
+   margin-right: auto;
+   max-width: initial;
+}
+
 .disastertitle {
   margin-left: 140px;
   padding-top: 30px;
+  padding-bottom: 50px;
   font-family: 'Times New';
 }
 
@@ -12,24 +20,29 @@ h2 {
   font-family: 'Libre Baskerville', serif;
 }
 
+.feedzilla {
+  padding-bottom: 50px;
+}
+
 .datastring {
   font-family: 'Vollkorn', serif;
 }
 
 .mapcontainer {
+  padding-left: 20px;
 /*	background-color: #5E798C;*/
-  position: absolute;
+/*  position: absolute;
   top: 130px;
-  left: 40px;
+  left: 40px;*/
 }
 
 #mapdata {
-  position: relative;
+/*  position: relative;
   top: 20px;
-  left: 880px;
-  height: 500px;
-  width: 530px;
-  padding: 5px;
+  left: 650px;*/
+/*  height: 500px;
+  width: 530px;*/
+  padding: 10px;
   text-align: left;
   color: #666;
   font-size: 14px;
@@ -37,11 +50,11 @@ h2 {
 }
 
 #disasters {
-  position: relative;
+/*  position: relative;
   top:400px;
   left: 100px;
   height: 400px;
-  width: 750px;
+  width: 750px;*/
 }
 
 

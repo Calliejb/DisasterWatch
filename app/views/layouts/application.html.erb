@@ -24,7 +24,7 @@
     <nav class="top-bar" data-topbar>
       <ul class="title-area">
         <li class="name">
-          <h1><a href="#"><%= link_to "HOME",root_path %></a></h1>
+          <h1><a href="#"><%= link_to "Home",root_path %></a></h1>
         </li>
          <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
         <li class="toggle-topbar menu-icon"><a href="#"></a></li>
@@ -34,16 +34,16 @@
         <!-- Right Nav Section -->
         <ul class="right">
           <% if user_signed_in? %>
-            <li class="active"><a href="#"><%= link_to "PROFILE", user_path(current_user) %></a></li>
+            <li class="active"><a href="#"><%= link_to "My Profile", user_path(current_user) %></a></li>
           <% else %>
             <li class="active"><a href="#"><%= link_to "Sign Up", new_user_registration_path %></a></li>
           <% end %>
           
           <li class="active">
             <% if user_signed_in? %>
-              <a href="#"><%= link_to "Sign Out", user_path(destroy_user_session_path), method: :delete %></a>
+              <a href="#"><%= link_to "Log Out", user_path(destroy_user_session_path), method: :delete %></a>
             <% else %>
-              <a href="#"><%= link_to "Sign In",  new_user_session_path %></a>
+              <a href="#"><%= link_to "Log In",  new_user_session_path %></a>
             <% end %>
             
 <!--             <ul class="dropdown">
@@ -55,11 +55,11 @@
 
         <!-- Left Nav Section -->
         <ul class="left">
-          <li><a href="#"><%= link_to "DISASTERS", disasters_path %></a></li>
-          <li><a href="#"><%= link_to "ORGANIZATIONS", organizations_path %></a></li>
+          <li><a href="#"><%= link_to "Recent Disasters", disasters_path %></a></li>
+          <li><a href="#"><%= link_to "Organizations", organizations_path %></a></li>
           <% if user_signed_in? %>
-            <li><a href="#"><%= link_to "CHOOSE/UPDATE NEWSFEED", countries_path %></a></li>
-            <li><a href="#"><%= link_to "MY NEWSFEED", updates_path %></a></li>
+            <li><a href="#"><%= link_to "Customize/Update Newsfeed", countries_path %></a></li>
+            <li><a href="#"><%= link_to "My Newsfeed", updates_path %></a></li>
           <% end %>
         </ul>
       </section>

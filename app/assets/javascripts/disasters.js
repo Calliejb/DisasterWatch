@@ -2,14 +2,14 @@
 //Renders map that shows disasters
 var color = "steelblue";
 
-var width = 800,
-	height = 1000,
+var width = 600,
+	height = 700,
 	sens = 0.25,
 	focused;
 
 //Sets up my globe projection
 var projection = d3.geo.orthographic()
-    .scale(350)
+    .scale(300)
     .rotate([0, 0])
     .translate([width / 2, height / 2])
     .clipAngle(90);

@@ -1,50 +1,68 @@
-<div class = "row">
+
+
+<div class = "row fullWidth">
+	<h1 class = "disastertitle">
+		CURRENT/RECENT DISASTERS AND CONFLICTS
+	</h1>
+</div>
+
+<div class = "row fullWidth">
 <!-- Feedzilla Widget BEGIN -->
-	<div class="feedzilla-news-widget feedzilla-28108022827655077" style="width:250px; padding-left: 30px; text-align: center; font-size: 11px; border: 0;">
-		<script type="text/javascript" src="http://widgets.feedzilla.com/news/iframe/js/widget.js"></script>
-		<script type="text/javascript">
-			new FEEDZILLA.Widget({
-				style: 'slide-top-to-bottom',
-				culture_code: 'en_us',
-				title: 'World News',
-				caption: 'All',
-				order: 'relevance',
-				count: '20',
-				w: '250',
-				h: '300',
-				timestamp: 'true',
-				scrollbar: 'false',
-				theme: 'dark-hive',
-				className: 'feedzilla-28108022827655077',
-				tabs: [{name: 'World News', c: '19', sc: '-'}]
-			});
-		</script><br />
+	<div class = "large-8 columns">
+		ABOUT THIS PAGE
 	</div>
-	<!-- Feedzilla Widget END -->
+	<div class = "hide-for-small-only large-4 columns">
+		<div class="feedzilla-news-widget feedzilla-28108022827655077" style="width:250px; padding-left: 30px; text-align: center; font-size: 11px; border: 0;">
+			<script type="text/javascript" src="http://widgets.feedzilla.com/news/iframe/js/widget.js"></script>
+			<script type="text/javascript">
+				new FEEDZILLA.Widget({
+					style: 'slide-top-to-bottom',
+					culture_code: 'en_us',
+					title: 'World News',
+					caption: 'All',
+					order: 'relevance',
+					count: '20',
+					w: '250',
+					h: '300',
+					timestamp: 'true',
+					scrollbar: 'false',
+					theme: 'dark-hive',
+					className: 'feedzilla-28108022827655077',
+					tabs: [{name: 'World News', c: '19', sc: '-'}]
+				});
+			</script><br />
+		</div>
+		<!-- Feedzilla Widget END -->
+	</div>
 </div>
 
-<h1 class = "disastertitle">
-	DISASTERS AND CONFLICTS
-</h1>
+<div class = "row fullWidth">
+	
+	<div class = "large-6 columns">
+		<div class = "mapcontainer">
+				
+			<div id="map">
+			</div>
 
-
-<div class = "mapcontainer">
-		
-	<div id="map">
+		</div>
 	</div>
 
+	<div class = "large-6 columns">
+		<div id = "mapdata">
+			<h3>Hover over country to see country data.</h3>
+		</div>
+	</div>
 </div>
 
-<div id = "mapdata">
-	<h3>Hover over country to see country data.</h3>
+<div class = "row fullWidth">
+	<div id = "disasters">
+		<p>Click on a colored country to see info on current conflicts and humanitarian disasters</p>
+	</div>
 </div>
 
-<div id = "disasters">
-	<p>Click on a colored country to see info on current conflicts and humanitarian disasters</p>
-</div>
 
 
-<div class = "row" id = "articles">
+
 
 
 
