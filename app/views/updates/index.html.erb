@@ -1,34 +1,37 @@
-<div class = "row">
-	<h1 class = "headlinetitle">My Personal Newsfeed</h1>
-</div>
 
-<div class = "row">
-	<div class="countrylist">
-		<ul class = "inline-list">
-			<% @countries.each do |c| %>
-				<li><%= c.name %></li>
-			<% end %>
-		</ul>
+<div class = "main">
+	<div class = "row">
+		<h1 class = "headlinetitle">My Personal Newsfeed</h1>
 	</div>
-</div>
 
-<div class = "row">
+	<div class = "row">
+		<div class="countrylist">
+			<ul class = "inline-list">
+				<% @countries.each do |c| %>
+					<li><%= c.name %></li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
 
-	<% @myupdates.each do |mu| %>
-		<% mu.each do |m| %>
-			<% if m != nil %>
-				<div class = "personalheadline">
-					<% m["articles"].each do |article| %> 
-						<h3><%= article["title"] %></h3>
-						<h4 class = "subheader"><%= article["publish_date"] %></h4>
-						<p><%= article["summary"] %><p>
-						<a href= "#"><%= link_to nil, article["url"] %></a><br>
-					<% end %>
-				</div>
+	<div class = "row">
+
+		<% @myupdates.each do |mu| %>
+			<% mu.each do |m| %>
+				<% if m != nil %>
+					<div class = "personalheadline">
+						<% m["articles"].each do |article| %> 
+							<h3><%= article["title"] %></h3>
+							<h4 class = "subheader"><%= article["publish_date"] %></h4>
+							<p><%= article["summary"] %><p>
+							<a href= "#"><%= link_to nil, article["url"] %></a><br>
+						<% end %>
+					</div>
+				<% end %>
 			<% end %>
-		<% end %>
 
-	<% end %>
+		<% end %>
+	</div>
 </div>
 
 
