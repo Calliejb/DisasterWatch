@@ -17,65 +17,67 @@
     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script src="http://d3js.org/topojson.v1.min.js"></script>
     <script src="jssor.slider.mini.js"></script>
+    <script src="js/foundation/foundation.topbar.js"></script>
   </head>
 
   <body>
+    <div class = "fixed">
+      <nav class="top-bar" data-topbar>
+        <ul class="title-area">
+          <li class="name">
+            <h1><a href="#"><%= link_to "Home",root_path %></a></h1>
+          </li>
+           <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+          <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+        </ul>
 
-    <nav class="top-bar" data-topbar>
-      <ul class="title-area">
-        <li class="name">
-          <h1><a href="#"><%= link_to "Home",root_path %></a></h1>
-        </li>
-         <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-        <li class="toggle-topbar menu-icon"><a href="#"></a></li>
-      </ul>
-
-      <section class="top-bar-section">
-        <!-- Right Nav Section -->
-        <ul class="right">
-          <% if user_signed_in? %>
-            <li class="active"><a href="#"><%= link_to "My Profile", user_path(current_user) %></a></li>
-          <% else %>
-            <li class="active"><a href="#"><%= link_to "Sign Up", new_user_registration_path %></a></li>
-          <% end %>
-          
-          <li class="active">
+        <section class="top-bar-section">
+          <!-- Right Nav Section -->
+          <ul class="right">
             <% if user_signed_in? %>
-              <a href="#"><%= link_to "Log Out", user_path(destroy_user_session_path), method: :delete %></a>
+              <li><a href="#"><%= link_to "My Profile", user_path(current_user) %></a></li>
             <% else %>
-              <a href="#"><%= link_to "Log In",  new_user_session_path %></a>
+              <li><a href="#"><%= link_to "Sign Up", new_user_registration_path %></a></li>
             <% end %>
             
+            <li class="active">
+              <% if user_signed_in? %>
+                <a href="#"><%= link_to "Log Out", user_path(destroy_user_session_path), method: :delete %></a>
+              <% else %>
+                <a href="#"><%= link_to "Log In",  new_user_session_path %></a>
+              <% end %>
+            </li>
+          </ul>
 
-
-          </li>
-        </ul>
-
-        <!-- Left Nav Section -->
-        <ul class="left">
-
-          <li class = "has-dropdown"><a href="#">Regional News</a>
-            <ul class="dropdown">
-                <li><a href="#"><%= link_to "Africa", africanews_path %></a></li>
-                <li><a href="#"><%= link_to "Asia", asianews_path %></a></li>
-                <li><a href="#"><%= link_to "Europe", europenews_path %></a></li>
-                <li><a href="#"><%= link_to "Middle East", middleeastnews_path %></a></li>
-                <li><a href="#"><%= link_to "North America", northamericanews_path %></a></li>
-                <li><a href="#"><%= link_to "Central America", centralamericanews_path %></a></li>
-                <li><a href="#"><%= link_to "South America", southamericanews_path %></a></li>
-                <li><a href="#"><%= link_to "Oceania", oceanianews_path %></a></li>
-            </ul>
-          </li>
-          <li><a href="#"><%= link_to "Recent Disasters", disasters_path %></a></li>
-          <% if user_signed_in? %>
-            <li><a href="#"><%= link_to "Customize/Update Newsfeed", countries_path %></a></li>
-            <li><a href="#"><%= link_to "My Newsfeed", updates_path %></a></li>
-          <% end %>
-        </ul>
-      </section>
-    </nav>
+          <!-- Left Nav Section -->
+          <ul class="left">
+            <li class = "has-dropdown"><a href="#">Regional News</a>
+              <ul class="dropdown">
+                  <li><a href="#"><%= link_to "Africa", africanews_path %></a></li>
+                  <li><a href="#"><%= link_to "Asia", asianews_path %></a></li>
+                  <li><a href="#"><%= link_to "Europe", europenews_path %></a></li>
+                  <li><a href="#"><%= link_to "Middle East", middleeastnews_path %></a></li>
+                  <li><a href="#"><%= link_to "North America", northamericanews_path %></a></li>
+                  <li><a href="#"><%= link_to "Central America", centralamericanews_path %></a></li>
+                  <li><a href="#"><%= link_to "South America", southamericanews_path %></a></li>
+                  <li><a href="#"><%= link_to "Oceania", oceanianews_path %></a></li>
+              </ul>
+            </li>
+            <li><a href="#"><%= link_to "Recent Disasters", disasters_path %></a></li>
+            <% if user_signed_in? %>
+              <li><a href="#"><%= link_to "Customize/Update Newsfeed", countries_path %></a></li>
+              <li><a href="#"><%= link_to "My Newsfeed", updates_path %></a></li>
+            <% end %>
+          </ul>
+        </section>
+      </nav>
+    </div>
 
     <%= yield %>
     <%= javascript_include_tag "application" %>
+  <script>
+    $(document).foundation();
+  </script>
+
   </body>
 </html>
