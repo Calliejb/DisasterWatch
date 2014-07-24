@@ -147,11 +147,11 @@ d3.json("countryjson", function(data) {
 
 				console.log(followedCountries.indexOf(country));
 
-				$("#mapselectdata").append("<h2>" + country + "</h2> <br>");
+				//$("#mapselectdata").append("<h2>" + country + "</h2> <br>");
 
 				if (followedCountries.indexOf(country) == -1) {
 					if (country) {
-						$(this).css({"fill": "green", "stroke": "lightblue" });
+						$(this).css({"fill": "#5784B5", "stroke": "#544E4E" });
 					}
 
 					if (country && value) {
@@ -170,6 +170,7 @@ d3.json("countryjson", function(data) {
 					if (country && value) {
 						$(this).css({"fill": "steelblue"});
 					}
+
 					//Removes the country from the array if not hightlighted
 					delete followedCountries[d.properties.index];
 					console.log(followedCountries);
@@ -197,6 +198,6 @@ function returnCountryArray() {
 			data: { country: { name: followedCountries[i] }},
 		});
 	}
-
+	$("#mapselecttdata").append(followedCountries);
 	$("#countryalert").html("<h3> Your country selection has been saved!</h3>");
 }
