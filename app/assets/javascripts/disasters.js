@@ -5,8 +5,8 @@ var color = "steelblue";
 var conflictcolor = d3.scale.quantize()
             .range(["#fff7ec","#fee8c8","#fdd49e","#fdbb84","#fc8d59","#ef6548","#d7301f","#b30000","#7f0000"]);
 
-var width = 600,
-	height = 700,
+var width = 640,
+	height = 650,
 	sens = 0.25,
 	focused;
 

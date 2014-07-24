@@ -3,7 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .countrytitle {
-	text-align: center;
+  padding-top: 30px;
+  padding-bottom: 10px;
+  h2 {
+    font-family: 'Ubuntu', sans-serif;
+    margin-bottom: 20px;
+  }
+  text-align: center;
 	button {
 		z-index: 10;
 	}
@@ -13,20 +19,11 @@
 	height: 60px;
 }
 
-#countryName {
-	position: relative;
-	margin-left: 60px;
+#mapselectdata {
+	font-family: 'Ubuntu', sans-serif;
 }
 
-/*#countryalert {
-	position: relative;
-	top: 40px;
-	left: 880px;
+.mapcontainer {
+	margin-left: 30px;
 }
-#mapselectdata {
-	position: relative;
-	top: 100px;
-	left: 880px;
-	height: 300px;
-	width: 400px;
-}*/
+

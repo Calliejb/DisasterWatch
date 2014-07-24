@@ -46,17 +46,27 @@
               <a href="#"><%= link_to "Log In",  new_user_session_path %></a>
             <% end %>
             
-<!--             <ul class="dropdown">
-              <li><a href="#">First link in dropdown</a></li>
-            </ul> -->
+
 
           </li>
         </ul>
 
         <!-- Left Nav Section -->
         <ul class="left">
+
+          <li class = "has-dropdown"><a href="#">Regional News</a>
+            <ul class="dropdown">
+                <li><a href="#"><%= link_to "Africa", africanews_path %></a></li>
+                <li><a href="#"><%= link_to "Asia", asianews_path %></a></li>
+                <li><a href="#"><%= link_to "Europe", europenews_path %></a></li>
+                <li><a href="#"><%= link_to "Middle East", middleeastnews_path %></a></li>
+                <li><a href="#"><%= link_to "North America", northamericanews_path %></a></li>
+                <li><a href="#"><%= link_to "Central America", centralamericanews_path %></a></li>
+                <li><a href="#"><%= link_to "South America", southamericanews_path %></a></li>
+                <li><a href="#"><%= link_to "Oceania", oceanianews_path %></a></li>
+            </ul>
+          </li>
           <li><a href="#"><%= link_to "Recent Disasters", disasters_path %></a></li>
-          <li><a href="#"><%= link_to "Organizations", organizations_path %></a></li>
           <% if user_signed_in? %>
             <li><a href="#"><%= link_to "Customize/Update Newsfeed", countries_path %></a></li>
             <li><a href="#"><%= link_to "My Newsfeed", updates_path %></a></li>

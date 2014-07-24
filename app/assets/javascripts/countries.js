@@ -2,8 +2,8 @@
 //Renders map that countries can be chosen to follow
 var color = "steelblue";
 
-var width = 620,
-	height = 650,
+var width = 640,
+	height = 620,
 	sens = 0.25,
 	focused;
 
@@ -144,24 +144,25 @@ d3.json("countryjson", function(data) {
 
 				var country = d.properties.name;
 				var value = d.properties.value;
+				var conflictvalue = d.properties.war;
 
 				console.log(followedCountries.indexOf(country));
 
-				//$("#mapselectdata").append("<h2>" + country + "</h2> <br>");
 
 				if (followedCountries.indexOf(country) == -1) {
 					if (country) {
-						$(this).css({"fill": "#5784B5", "stroke": "#544E4E" });
+						$(this).css({"fill": "#0CE9F5", "stroke": "#544E4E" });
 					}
 
-					if (country && value) {
-						$(this).css({"fill": "lightblue"});
-					}
+					// if (country && value) {
+					// 	$(this).css({"fill": "lightblue"});
+					// }
 					//Adds the country that the user wants to follow to the followedCountries array
 					followedCountries.push(country);
 					var countryIndex = followedCountries.indexOf(country);
 					d.properties.index = countryIndex;
 					console.log(followedCountries);
+					$("#mapselectdata").append("<h4>" + country + "</h4> <br>");
 				} else {
 					if (country) {
 						$(this).css({"fill": "grey" });
@@ -169,6 +170,10 @@ d3.json("countryjson", function(data) {
 					
 					if (country && value) {
 						$(this).css({"fill": "steelblue"});
+					}
+
+					if (country && conflictvalue) {
+						$(this).css({"fill": "#911919"});
 					}
 
 					//Removes the country from the array if not hightlighted
@@ -197,7 +202,12 @@ function returnCountryArray() {
 			url: "/countries",
 			data: { country: { name: followedCountries[i] }},
 		});
+
+		console.log(followedCountries[i]);
+
+		//$("#mapselecttdata").html("<h3>" + followedCountries[i] + "</h3>");
 	}
-	$("#mapselecttdata").append(followedCountries);
+	
+
 	$("#countryalert").html("<h3> Your country selection has been saved!</h3>");
 }
