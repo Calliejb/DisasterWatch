@@ -2,6 +2,9 @@
 //Renders map that shows disasters
 var color = "steelblue";
 
+var conflictcolor = d3.scale.quantize()
+            .range(["#fff7ec","#fee8c8","#fdd49e","#fdbb84","#fc8d59","#ef6548","#d7301f","#b30000","#7f0000"]);
+
 var width = 600,
 	height = 700,
 	sens = 0.25,
@@ -53,6 +56,12 @@ d3.json("countryjson", function(data) {
 		//Geographic data for map
 		d3.json("countrymapjson", function(error, json) {
 
+
+				conflictcolor.domain([
+					d3.min(json, function(d) { return d.properties.war.deaths; }),
+					d3.max(json, function(d) { return d.properties.war.deaths; })
+				]);
+
 				if (error) {
 					console.log(error);
 				} else {
@@ -77,14 +86,15 @@ d3.json("countryjson", function(data) {
 							json.features[j].properties.value = 1;
 							json.features[j].properties.disastervalue = dataDisaster;
 							
-							console.log(json.features[j].properties.disastervalue);
+							//console.log(json.features[j].properties.disastervalue);
 							//Stop looking through the JSON
 							break;
 
 							}
-						} 
+						}
 					}
 				}
+
 
 			svgmap.selectAll("path")
 				.data(json.features)
@@ -95,14 +105,16 @@ d3.json("countryjson", function(data) {
 				//Data value
 				var value = d.properties.value;
 				var conflictvalue = d.properties.war;
-					if (value) {
+
+					if (value & conflictvalue) {
 					//If value exists…
 						return color;
 					} else if (conflictvalue) {
-					//If value is undefined…
+						console.log(conflictvalue.deaths);
 						return "#911919";
-					} else if (value & conflictvalue) {
-						return "orange";
+						//return conflictcolor(conflictvalue.deaths);
+					} else if (value) {
+						return color;
 					} else {
 						return "grey";
 					}
@@ -128,7 +140,7 @@ d3.json("countryjson", function(data) {
 
 				$("#mapdata").html("<h2>" + countryName + "</h2> <br>" + "<p class = 'datastring'>" + countryInfo + "</p>");
 
-				console.log(dataString);
+				//console.log(dataString);
 
 				d3.select(this)
 					.style("fill", "orange");
@@ -139,10 +151,10 @@ d3.json("countryjson", function(data) {
 				var value = d.properties.value;
 				var conflictvalue = d.properties.war;
 
-				if (value) {
-					d3.select(this).style("fill", "steelblue");
-				} else if (conflictvalue) {
+				if (conflictvalue) {
 					d3.select(this).style("fill", "#911919");
+				} else if (value) {
+					d3.select(this).style("fill", "steelblue");
 				} else {
 					d3.select(this).style("fill", "grey");
 				}
@@ -151,6 +163,11 @@ d3.json("countryjson", function(data) {
 
 
 			function countryClicked(d) {
+
+				if (d.properties.disastervalue || d.properties.war) {
+					$('#myModal').foundation('reveal', 'open');
+				}
+
 
 				selectedCountries = [];
 				var countryName = d.properties.name;
@@ -185,13 +202,13 @@ d3.json("countryjson", function(data) {
 
 				if (selectedCountries.indexOf(country) == -1) {
 
-					if (country) {
-						$(this).css({"fill": "darkgreen" });
-					}
+					// if (country) {
+					// 	$(this).css({"fill": "darkgreen" });
+					// }
 
-					if (country && value) {
-						$(this).css({"fill": "lightblue"});
-					}
+					// if (country && value) {
+					// 	$(this).css({"fill": "lightblue"});
+					// }
 					//Adds the country that the user wants to follow to the followedCountries array
 					selectedCountries.push(country);
 					// var countryIndex = followedCountries.indexOf(country);
@@ -216,6 +233,11 @@ d3.json("countryjson", function(data) {
 		});
 	});
 });
+
+$("#myModal").click(function(){
+	$('#myModal').foundation('reveal', 'close');
+});
+
 
 //End of COUNTRY JSON DATA
 

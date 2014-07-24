@@ -151,7 +151,7 @@ d3.json("countryjson", function(data) {
 
 				if (followedCountries.indexOf(country) == -1) {
 					if (country) {
-						$(this).css({"fill": "green", "stroke": "darkgreen" });
+						$(this).css({"fill": "green", "stroke": "lightblue" });
 					}
 
 					if (country && value) {

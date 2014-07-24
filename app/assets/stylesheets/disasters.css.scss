@@ -21,7 +21,9 @@ h2 {
 }
 
 .feedzilla {
-  padding-bottom: 50px;
+  padding: 50px;
+  background-color: white;
+  border: 2px solid grey;
 }
 
 .datastring {
@@ -42,7 +44,7 @@ h2 {
   left: 650px;*/
 /*  height: 500px;
   width: 530px;*/
-  padding: 10px;
+  padding: 10px 30px 10px 10px;
   text-align: left;
   color: #666;
   font-size: 14px;
